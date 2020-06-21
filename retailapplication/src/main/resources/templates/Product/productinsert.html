@@ -15,7 +15,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <link rel="stylesheet" th:href="@{css/tabstyle.css}">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Insert Product</title>
 </head>
 <body class="d-flex flex-column h-100">
 	
@@ -29,6 +29,8 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"></script>
 		
+		<h5 class="h3 mb-3 font-weight-normal">Provide Details for the product you want to Insert</h5>
+		
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
@@ -36,9 +38,8 @@
 				</div>
 			</div>
 		</div>
-		<h1 class="h3 mb-3 font-weight-normal">Products Insert</h1>
 		
-		<label for="inputprodname" class="sr-only">ProductName</label>
+		<label for="inputprodname" class="sr-only">Product Name</label>
 		<input type="text" th:field="*{productName}"
 			class="form-control" placeholder="Product Name" required>
 		<p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product Name Error</p>

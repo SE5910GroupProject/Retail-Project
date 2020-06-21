@@ -1,5 +1,7 @@
 package com.example.retailstore.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.example.retailstore.form.CreateProductForm;
-import com.example.retailstore.form.UpdateProductForm;
+import com.example.retailstore.form.product.CreateProductForm;
+import com.example.retailstore.form.product.DeleteProductForm;
+import com.example.retailstore.form.product.ShowProductForm;
+import com.example.retailstore.form.product.UpdateProductForm;
 import com.example.retailstore.model.Product;
 import com.example.retailstore.service.ProductsService;
 
@@ -47,12 +51,6 @@ public class ProductController {
 		}
 	}
 	
-	@GetMapping("/productdelete")
-	public String getProductDelete() {
-		return "product/productdelete";
-	}
-
-	
 	@GetMapping("/productupdate")
 	public String getProductUpdate(UpdateProductForm updateProductForm) {
 		
@@ -60,7 +58,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/productupdate")
-	public String getProductUpdate(@Valid UpdateProductForm updateProductForm, BindingResult bindingResult, Model model) {
+	public String postProductUpdate(@Valid UpdateProductForm updateProductForm, BindingResult bindingResult, Model model) {
 
 		if(bindingResult.hasErrors()) {
 			return "/product/productupdate";
@@ -68,15 +66,48 @@ public class ProductController {
 		else {
 			productService.updateProduct(convertUpdateToBO(updateProductForm));
 			model.addAttribute("successMSG", "Product has been updated successfully!");
-			model.addAttribute("updateProductForm", new CreateProductForm());
+			model.addAttribute("updateProductForm", new UpdateProductForm());
 			
 			return "product/productupdate";
 		}
 	}
 
+	@GetMapping("/productdelete")
+	public String getProductDelete(DeleteProductForm deleteProductForm) {
+		return "product/productdelete";
+	}
+	
+	@PostMapping("/productdelete")
+	public String postProductDelete(@Valid DeleteProductForm deleteProductForm, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "/product/productdelete";
+		}
+		else {
+			productService.deleteProduct(deleteProductForm.getProductID());
+			model.addAttribute("successMSG", "Product has been deleted successfully!");
+			model.addAttribute("deleteProductForm", new DeleteProductForm());
+			
+			return "product/productdelete";
+		}
+	}
+	
 	@GetMapping("/productshow")
-	public String getProductShow() {
+	public String getProductShow(ShowProductForm showProductForm) {
 		return "product/productshow";
+	}
+	
+	@PostMapping("/productshow")
+	public String postProductShow(@Valid DeleteProductForm showProductForm, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "/product/productdelete";
+		}
+		else {
+			List<Product> products = productService.retrieveAllProducts();
+			model.addAttribute("successMSG", "Product has been deleted successfully!");
+			model.addAttribute("showProductForm", new ShowProductForm());
+			
+			return "product/productdelete";
+		}
 	}
 	
 	private Product convertCreateToBO(CreateProductForm form) {
@@ -94,7 +125,7 @@ public class ProductController {
 	
 	private Product convertUpdateToBO(UpdateProductForm form) {
 		Product product = new Product();
-		product.setID(form.getProductID());
+		product.setProductID(form.getProductID());
 		product.setSupplierID(form.getSupplierID());
 		product.setCategoryID(form.getCategoryID());
 		product.setProductName(form.getProductName());

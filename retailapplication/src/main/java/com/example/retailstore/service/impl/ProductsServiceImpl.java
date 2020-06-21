@@ -19,11 +19,13 @@ public class ProductsServiceImpl implements ProductsService {
 	@Override
 	public void insertProduct(Product product) {
 		//Can return, maybe do something with it?
-		productsRepository.save(product);
+		if( !productsRepository.existsById(product.getProductID()) ) {
+			productsRepository.save(product);
+		}
 	}
 
 	@Override
-	public List<Product> retrieveAllProducts() {
+	public List<Product> retrieveAllProducts() { 
 		return productsRepository.findAll();
 	}
 	
@@ -41,13 +43,18 @@ public class ProductsServiceImpl implements ProductsService {
 
 	@Override
 	public void updateProduct(Product product) {
-		//Can return something, maybe do something with it?
-		productsRepository.save(product);
+		//ADD CONFIRMATION TO NOT ALLOW INSERTING
+		if( productsRepository.existsById(product.getProductID()) ) {
+			productsRepository.save(product);
+		}
+		
 	}
 
 	@Override
 	public void deleteProduct(int id) {
-		productsRepository.deleteById(id);
+		if(productsRepository.existsById(id)) {
+			productsRepository.deleteById(id);
+		}
 	}
 
 }

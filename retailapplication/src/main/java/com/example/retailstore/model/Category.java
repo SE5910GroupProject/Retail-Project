@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "categories")
@@ -14,21 +15,25 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private int id;
+	private int categoryID;
 
 	@Column(name = "category_name", nullable = false)
 	private String categoryName;
 
 	@Column(name = "description")
 	private String description;
+	
+	@Version
+	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
+	private Integer version = 0;
 
 	
-	public int getID() {
-		return id;
+	public int getCategoryID() {
+		return categoryID;
 	}
 
-	public void setID(int id) {
-		this.id = id;
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
 	}
 
 	public String getCategoryName() {
@@ -45,6 +50,14 @@ public class Category {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 	
 }

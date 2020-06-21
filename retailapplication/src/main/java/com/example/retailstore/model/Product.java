@@ -1,5 +1,6 @@
 package com.example.retailstore.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -8,15 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1939451843224897442L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
-	private Integer id;
+	private Integer productID;
 
 	@Column(name = "supplier_id", nullable = false)
 	private Integer supplierID;
@@ -41,14 +48,18 @@ public class Product {
 
 	@Column(name = "product_status")
 	private Integer productStatus;
+	
+	@Version
+	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
+	private Integer version = 0;
 
 	
-	public Integer getID() {
-		return id;
+	public Integer getProductID() {
+		return productID;
 	}
 
-	public void setID(Integer id) {
-		this.id = id;
+	public void setProductID(Integer productID) {
+		this.productID = productID;
 	}
 
 	public String getProductName() {
@@ -113,6 +124,14 @@ public class Product {
 
 	public void setCategoryID(Integer categoryID) {
 		this.categoryID = categoryID;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 	
 }
