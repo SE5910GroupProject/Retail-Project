@@ -13,6 +13,7 @@ public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "employee_id")
 	private int id;
 	
 	@Column(name = "name")

@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +18,8 @@ public class Order {
 	@Column(name = "order_id")
 	private int id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id", nullable = false)
-	private Customer customer;
+	@Column(name = "customer_id", nullable = false)
+	private int customerID;
 	
 	@Column(name = "user_id", nullable = false)
 	private int userID;
@@ -40,12 +36,12 @@ public class Order {
 		this.id = id;
 	}
 	
-	public Customer getCustomer() {
-		return customer;
+	public int getCustomerID() {
+		return customerID;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 
 	public int getUserID() {

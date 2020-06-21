@@ -2,12 +2,9 @@ package com.example.retailstore.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,13 +16,11 @@ public class Product {
 	@Column(name = "product_id")
 	private int id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "supplier_id", nullable = false)
-	private Supplier supplier;
+	@Column(name = "supplier_id", nullable = false)
+	private int supplierID;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id", nullable = false)
-	private Category category;
+	@Column(name = "category_id", nullable = false)
+	private int categoryID;
 
 	@Column(name = "product_name", nullable = false)
 	private String productName;
@@ -52,22 +47,6 @@ public class Product {
 
 	public void setID(int id) {
 		this.id = id;
-	}
-
-	public Supplier getSupplier() {
-		return supplier;
-	}
-
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 	public String getProductName() {
@@ -116,6 +95,22 @@ public class Product {
 
 	public void setProductStatus(int productStatus) {
 		this.productStatus = productStatus;
+	}
+
+	public int getSupplierID() {
+		return supplierID;
+	}
+
+	public void setSupplierID(int supplierID) {
+		this.supplierID = supplierID;
+	}
+
+	public int getCategoryID() {
+		return categoryID;
+	}
+
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
 	}
 	
 }
