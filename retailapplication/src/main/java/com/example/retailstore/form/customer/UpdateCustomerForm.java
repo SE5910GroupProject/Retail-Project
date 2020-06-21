@@ -1,51 +1,18 @@
-package com.example.retailstore.model;
+package com.example.retailstore.form.customer;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Version;
-
-@Entity
-@Table(name = "customers")
-public class Customer {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
+public class UpdateCustomerForm {
+	
 	private int customerID;
-	
-	@Column(name = "first_name", nullable = false)
 	private String firstName;
-	
-	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name = "address")
 	private String address;
-	
-	@Column(name = "city")
 	private String city;
-	
-	@Column(name = "zip_code")
-	private Integer zipCode;
-	
-	@Column(name = "country")
+	private int zipCode;
 	private String country;
-	
-	@Column(name = "phone_number")
-	private Integer phoneNumber;
-	
-	@Column(name = "birth_day")
+	private int phoneNumber;
 	private String birthDate;
-	
-	@Version
-	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
-	private Integer version = 0;
 	
 	public int getCustomerID() {
 		return customerID;
@@ -87,11 +54,11 @@ public class Customer {
 		this.city = city;
 	}
 	
-	public Integer getZipCode() {
+	public int getZipCode() {
 		return zipCode;
 	}
 	
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 	
@@ -103,11 +70,11 @@ public class Customer {
 		this.country = country;
 	}
 	
-	public Integer getPhoneNumber() {
+	public int getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -118,12 +85,5 @@ public class Customer {
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
-
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
+	
 }
