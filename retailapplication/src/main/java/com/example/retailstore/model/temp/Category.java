@@ -1,16 +1,16 @@
-package com.example.retailstore.form.category;
+package com.example.retailstore.model.temp;
 
-public class UpdateCategoryForm {
+public class Category {
 
-	private Integer categoryID;
+	private int categoryID;
 	private String categoryName;
 	private String description;
 	
-	public Integer getCategoryID() {
+	public int getCategoryID() {
 		return categoryID;
 	}
 	
-	public void setCategoryID(Integer categoryID) {
+	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
 	}
 	
@@ -21,11 +21,11 @@ public class UpdateCategoryForm {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}

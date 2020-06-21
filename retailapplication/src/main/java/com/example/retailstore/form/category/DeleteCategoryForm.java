@@ -2,13 +2,13 @@ package com.example.retailstore.form.category;
 
 public class DeleteCategoryForm {
 
-	private int categoryID;
+	private Integer categoryID;
 	
-	public int getCategoryID() {
+	public Integer getCategoryID() {
 		return categoryID;
 	}
 	
-	public void setCategoryID(int categoryID) {
+	public void setCategoryID(Integer categoryID) {
 		this.categoryID = categoryID;
 	}
 	

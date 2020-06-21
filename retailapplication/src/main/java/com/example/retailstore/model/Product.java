@@ -1,6 +1,5 @@
 package com.example.retailstore.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -13,17 +12,12 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "products")
-public class Product implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1939451843224897442L;
+public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
-	private Integer productID;
+	private int productID;
 
 	@Column(name = "supplier_id", nullable = false)
 	private Integer supplierID;
@@ -54,11 +48,11 @@ public class Product implements Serializable {
 	private Integer version = 0;
 
 	
-	public Integer getProductID() {
+	public int getProductID() {
 		return productID;
 	}
 
-	public void setProductID(Integer productID) {
+	public void setProductID(int productID) {
 		this.productID = productID;
 	}
 

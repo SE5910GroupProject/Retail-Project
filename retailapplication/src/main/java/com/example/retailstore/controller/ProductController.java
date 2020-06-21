@@ -27,7 +27,7 @@ public class ProductController {
 	
 	@GetMapping("/productindex")
 	public String getProduct() {
-		return "product/productindex";
+		return "/product/productindex";
 	}
 
 	@GetMapping("/productinsert")
@@ -68,13 +68,13 @@ public class ProductController {
 			model.addAttribute("successMSG", "Product has been updated successfully!");
 			model.addAttribute("updateProductForm", new UpdateProductForm());
 			
-			return "product/productupdate";
+			return "/product/productupdate";
 		}
 	}
 
 	@GetMapping("/productdelete")
 	public String getProductDelete(DeleteProductForm deleteProductForm) {
-		return "product/productdelete";
+		return "/product/productdelete";
 	}
 	
 	@PostMapping("/productdelete")
@@ -87,13 +87,13 @@ public class ProductController {
 			model.addAttribute("successMSG", "Product has been deleted successfully!");
 			model.addAttribute("deleteProductForm", new DeleteProductForm());
 			
-			return "product/productdelete";
+			return "/product/productdelete";
 		}
 	}
 	
 	@GetMapping("/productshow")
 	public String getProductShow(ShowProductForm showProductForm) {
-		return "product/productshow";
+		return "/product/productshow";
 	}
 	
 	@PostMapping("/productshow")
@@ -106,7 +106,7 @@ public class ProductController {
 			model.addAttribute("successMSG", "Product has been deleted successfully!");
 			model.addAttribute("showProductForm", new ShowProductForm());
 			
-			return "product/productdelete";
+			return "/product/productdelete";
 		}
 	}
 	
