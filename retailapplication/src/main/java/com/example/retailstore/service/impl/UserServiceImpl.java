@@ -1,4 +1,4 @@
-package com.example.retailstore.service;
+package com.example.retailstore.service.impl;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.retailstore.model.Role;
 import com.example.retailstore.model.User;
 import com.example.retailstore.repositories.UserRepository;
+import com.example.retailstore.service.UserService;
 import com.example.retailstore.repositories.RoleRepository;
 
 @Service("userService")

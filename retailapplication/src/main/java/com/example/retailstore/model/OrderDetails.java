@@ -18,6 +18,7 @@ public class OrderDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_details_id")
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
