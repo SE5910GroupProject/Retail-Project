@@ -30,31 +30,5 @@ public class HomeController {
 		return "home/home";
 		
 	}
-	
-	@GetMapping("/product/productindex")
-	public String getProduct() {
-		return "product/productindex";
-		
-	}
-	@GetMapping("/product/productinsert")
-	public String getProductInsert() {
-		return "product/productinsert";
-		
-	}
-	@GetMapping("/product/productdelete")
-	public String getProductDelete() {
-		return "product/productdelete";
-		
-	}
-	@GetMapping("/product/productupdate")
-	public String getProductUpdate() {
-		return "product/productupdate";
-		
-	}
-	@GetMapping("/product/productshow")
-	public String getProductShow() {
-		return "product/productshow";
-		
-	}
 
 }
