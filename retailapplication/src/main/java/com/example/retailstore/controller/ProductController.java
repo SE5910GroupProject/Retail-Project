@@ -4,13 +4,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
+import com.example.retailstore.form.CreateProductForm;
+import com.example.retailstore.form.UpdateProductForm;
 import com.example.retailstore.model.Product;
 import com.example.retailstore.service.ProductsService;
 
@@ -22,48 +22,88 @@ public class ProductController {
 	ProductsService productService;
 	
 	@GetMapping("/productindex")
-	public String getProduct(ModelMap modelMap) {
-		
-		modelMap.addAttribute("products", productService.retrieveAllProducts());
-		
+	public String getProduct() {
 		return "product/productindex";
 	}
 
 	@GetMapping("/productinsert")
-	public ModelAndView getProductInsert() {
-		ModelAndView model = new ModelAndView();
-		model.addObject("product", new Product());
-		model.setViewName("product/productinsert");
+	public String getProductInsert(CreateProductForm createProductForm) {
 		
-		return model;
+		return "/product/productinsert";
 	}
 	
 	@PostMapping("/productinsert")
-	public ModelAndView postProductInsert(@Valid Product product, BindingResult bindingResult) {
+	public String postProductInsert(@Valid CreateProductForm createProductForm, BindingResult bindingResult, Model model) {
 		
-		ModelAndView model = new ModelAndView();
-		
-		productService.insertProduct(product);
-		
-		model.addObject("product", new Product());
-		model.setViewName("product/productinsert");
-		
-		return model;
+		if(bindingResult.hasErrors()) {
+			return "/product/productinsert";
+		}
+		else {
+			productService.insertProduct(convertCreateToBO(createProductForm));
+			model.addAttribute("successMSG", "Product has been inserted successfully!");
+			model.addAttribute("createProductForm", new CreateProductForm());
+			
+			return "/product/productinsert";
+		}
 	}
-
+	
 	@GetMapping("/productdelete")
 	public String getProductDelete() {
 		return "product/productdelete";
 	}
 
+	
 	@GetMapping("/productupdate")
-	public String getProductUpdate() {
-		return "product/productupdate";
+	public String getProductUpdate(UpdateProductForm updateProductForm) {
+		
+		return "/product/productupdate";
+	}
+	
+	@PostMapping("/productupdate")
+	public String getProductUpdate(@Valid UpdateProductForm updateProductForm, BindingResult bindingResult, Model model) {
+
+		if(bindingResult.hasErrors()) {
+			return "/product/productupdate";
+		}
+		else {
+			productService.updateProduct(convertUpdateToBO(updateProductForm));
+			model.addAttribute("successMSG", "Product has been updated successfully!");
+			model.addAttribute("updateProductForm", new CreateProductForm());
+			
+			return "product/productupdate";
+		}
 	}
 
 	@GetMapping("/productshow")
 	public String getProductShow() {
 		return "product/productshow";
+	}
+	
+	private Product convertCreateToBO(CreateProductForm form) {
+		Product product = new Product();
+		product.setSupplierID(form.getSupplierID());
+		product.setCategoryID(form.getCategoryID());
+		product.setProductName(form.getProductName());
+		product.setUnitPrice(form.getUnitPrice());
+		product.setQuantityPerUnit(form.getQuantityPerUnit());
+		product.setUnitsInStock(form.getUnitsInStock());
+		product.setDiscountPercent(form.getDiscountPercent());
+		product.setProductStatus(form.getProductStatus());
+		return product;
+	}
+	
+	private Product convertUpdateToBO(UpdateProductForm form) {
+		Product product = new Product();
+		product.setID(form.getProductID());
+		product.setSupplierID(form.getSupplierID());
+		product.setCategoryID(form.getCategoryID());
+		product.setProductName(form.getProductName());
+		product.setUnitPrice(form.getUnitPrice());
+		product.setQuantityPerUnit(form.getQuantityPerUnit());
+		product.setUnitsInStock(form.getUnitsInStock());
+		product.setDiscountPercent(form.getDiscountPercent());
+		product.setProductStatus(form.getProductStatus());
+		return product;
 	}
 
 }

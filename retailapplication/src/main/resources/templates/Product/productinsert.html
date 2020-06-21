@@ -19,7 +19,7 @@
 </head>
 <body class="d-flex flex-column h-100">
 	
-	<form class="form-horizontal" role="form" method="POST" th:action="@{/product/productinsert}" th:object="${product}"> S
+	<form class="form-horizontal" action="#" th:action="@{/product/productinsert}" th:object="${createProductForm}" method="POST">
 		<div th:replace="~{fragments/navigation :: navigation}"></div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -29,44 +29,49 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"></script>
 		
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="alert alert-success" role="alert" th:if="${successMSG}" th:utext="${successMSG}">
+				</div>
+			</div>
+		</div>
 		<h1 class="h3 mb-3 font-weight-normal">Products Insert</h1>
 		
 		<label for="inputprodname" class="sr-only">ProductName</label>
-		<input type="text" th:field="*{productName}" id="productName" name="prodname"
-			class="form-control" placeholder="ProductName" required>
+		<input type="text" th:field="*{productName}"
+			class="form-control" placeholder="Product Name" required>
+		<p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product Name Error</p>
 		
 		<label for="inputprodsupplierid" class="sr-only">SupplierID</label>
-		<input type="number" th:field="*{supplierID}" id="*{supplierID}" name="prodsupplierid"
+		<input type="number" th:field="*{supplierID}"
 			class="form-control" placeholder="SupplierID" required>
 		
 		<label for="inputprodcatid" class="sr-only">CategoryID</label>
-		<input type="number" th:field="*{categoryID}" id="*{categoryID}" name="prodcatid"
+		<input type="number" th:field="*{categoryID}"
 			class="form-control" placeholder="CategoryID" required>
 		
 		<label for="inputprodunitprice" class="sr-only">Unit Price</label>
-		<input type="number" th:field="*{unitPrice}" id="*{unitPrice}" name="produnitprice"
+		<input type="number" th:field="*{unitPrice}"
 			class="form-control" placeholder="Unit Price" required>
 		
 		<label for="inputprodquantityperunit" class="sr-only">Quantity
 			Per Unit</label>
-		<input type="number" th:field="*{quantityPerUnit}" id="quantityPerUnit"
-			name="prodquantityperunit" class="form-control"
-			placeholder="Quantity Per Unit" required>
+		<input type="number" th:field="*{quantityPerUnit}"
+			class="form-control" placeholder="Quantity Per Unit" required>
 		
 		<label for="inputprodunitsinstock" class="sr-only">Units In
 			Stock</label>
-		<input type="number" th:field="*{unitsInStock}" id="unitsInStock"
-			name="produnitsinstock" class="form-control"
-			placeholder="Units In Stock" required>
+		<input type="number" th:field="*{unitsInStock}"
+			class="form-control" placeholder="Units In Stock" required>
 		
 		<label for="inputproddiscountpercent" class="sr-only">Discount
 			Percent</label>
-		<input type="number" th:field="*{discountPercent}" id="discountPercent"
-			name="proddiscountpercent" class="form-control"
-			placeholder="Discount Percent" required>
+		<input type="number" th:field="*{discountPercent}" 
+			class="form-control" placeholder="Discount Percent" required>
 		
 		<label for="inputprodstatus" class="sr-only">Product Status</label>
-		<input type="number" th:field="*{productStatus}" id="productStatus" name="prodstatus"
+		<input type="number" th:field="*{productStatus}"
 			class="form-control" placeholder="Product Status" required>
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Insert</button>
