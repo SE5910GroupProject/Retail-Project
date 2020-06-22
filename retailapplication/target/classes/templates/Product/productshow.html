@@ -58,8 +58,8 @@
 				</tr>
 				<tr th:each="product: ${products}">
 					<td th:text="${product.productID}" />
-		    		<td th:text="${product.supplierID}" />
-		    		<td th:text="${product.categoryID}" />
+		    		<td th:text="${product.supplier.supplierID}" />
+		    		<td th:text="${product.category.categoryID}" />
 		    		<td th:text="${product.productName}" />
 		    		<td th:text="${product.unitPrice}" />
 		    		<td th:text="${product.quantityPerUnit}" />

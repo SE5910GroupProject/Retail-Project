@@ -11,7 +11,7 @@ import com.example.retailstore.model.Product;
 @Repository("productsRepository")
 public interface ProductsRepository extends JpaRepository<Product, Integer>  {
 
-	@Query(value = "SELECT * FROM products c WHERE c.product_id >= ?1 AND c.product_id <= ?2", nativeQuery = true)
+	@Query(value = "SELECT * FROM products c WHERE c.products_id >= ?1 AND c.products_id <= ?2", nativeQuery = true)
 	List<Product> findProductsBetweenIdRange(int startIndex, int endIndex);
 	
 }

@@ -56,8 +56,8 @@
 				</tr>
 				<tr th:each="orderDetail: ${orderDetails}">
 					<td th:text="${orderDetail.orderDetailsID}" />
-			    	<td th:text="${orderDetail.orderID}" />
-			    	<td th:text="${orderDetail.productID}" />
+			    	<td th:text="${orderDetail.order.orderID}" />
+			    	<td th:text="${orderDetail.product.productID}" />
 			    	<td th:text="${orderDetail.quantity}" />
 			    	<td th:text="${orderDetail.unitPrice}" />
 			    	<td th:text="${orderDetail.discount}" />
