@@ -58,14 +58,14 @@ public class CategoriesController {
 	@PostMapping("/categoryshow")
 	public String postCategoryShow(@Valid ShowCategoryForm showCategoryForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "/category/categorydelete";
+			return "/categories/categoryshow";
 		}
 		else {
 			List<Category> categories = categoriesService.retrieveAllCategories();
-			model.addAttribute("successMSG", "Category has been deleted successfully!");
+			model.addAttribute("categories", categories);
 			model.addAttribute("showCategoryForm", new ShowCategoryForm());
 			
-			return "category/categorydelete";
+			return "categories/categoryshow";
 		}
 	}
 	

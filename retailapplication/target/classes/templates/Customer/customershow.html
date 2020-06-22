@@ -15,7 +15,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <link rel="stylesheet" th:href="@{css/tabstyle.css}">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Show Customers</title>
 </head>
 <body class="d-flex flex-column h-100">
 	<form class="form-horizontal" action="#" th:action="@{/customer/customershow}" th:object="${showCustomerForm}" method="POST">
@@ -39,11 +39,36 @@
 		<label for="inputcustidto" class="sr-only">CustomerID-To</label>
 		<input type="custidto" id="custidto" name="custidto" class="form-control"
 			placeholder="CustomerID-To" required>
-	
+
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Show</button>
-		
-		<textarea rows="custidto-custidfrom" cols="8" placeholder="Customers will be displayed here!!!!"></textarea>
-			
+
+		<div th:if="${not #lists.isEmpty(customers)}">
+			<table class="form-control">
+				<tr>
+					<th>Customer ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Address</th>
+					<th>City</th>
+					<th>Zip Code</th>
+					<th>Country</th>
+					<th>Phone Number</th>
+					<th>Birthday</th>
+				</tr>
+				<tr th:each="customer: ${customers}">
+					<td th:text="${customer.customerID}" />
+		    		<td th:text="${customer.firstName}" />
+		    		<td th:text="${customer.lastName}" />
+		    		<td th:text="${customer.address}" />
+		    		<td th:text="${customer.city}" />
+		    		<td th:text="${customer.zipCode}" />
+		    		<td th:text="${customer.country}" />
+		    		<td th:text="${customer.phoneNumber}" />
+		    		<td th:text="${customer.birthDate}" />
+				</tr>
+			</table>
+		</div>
+
 		<div th:replace="~{fragments/footer :: footer}"></div>
 
 	</form>

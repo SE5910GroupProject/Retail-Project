@@ -97,16 +97,16 @@ public class SupplierController {
 	}
 	
 	@PostMapping("/suppliershow")
-	public String postSupplierShow(@Valid DeleteSupplierForm showSupplierForm, BindingResult bindingResult, Model model) {
+	public String postSupplierShow(@Valid ShowSupplierForm showSupplierForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "/suppliers/supplierdelete";
+			return "/suppliers/suppliershow";
 		}
 		else {
 			List<Supplier> suppliers = supplierService.retrieveAllSuppliers();
-			model.addAttribute("successMSG", "Supplier has been deleted successfully!");
+			model.addAttribute("suppliers", suppliers);
 			model.addAttribute("showSupplierForm", new ShowSupplierForm());
 			
-			return "/suppliers/supplierdelete";
+			return "/suppliers/suppliershow";
 		}
 	}
 	

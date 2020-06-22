@@ -99,14 +99,14 @@ public class CustomersController {
 	@PostMapping("/customershow")
 	public String postCustomerShow(@Valid DeleteCustomerForm showCustomerForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "/customer/customerdelete";
+			return "/customer/customershow";
 		}
 		else {
 			List<Customer> customers = customerService.retrieveAllCustomers();
-			model.addAttribute("successMSG", "Customer has been deleted successfully!");
+			model.addAttribute("customers", customers);
 			model.addAttribute("showCustomerForm", new ShowCustomerForm());
 			
-			return "/customer/customerdelete";
+			return "/customer/customershow";
 		}
 	}
 	

@@ -15,33 +15,60 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Show Products</title>
 </head>
 
 <body class="d-flex flex-column h-100">
-	<div th:replace="~{fragments/navigation :: navigation}"></div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
-	
-	<h5 class="h3 mb-3 fontweight-normal">Provide Details for the Range of ids you want to look At!!!</h5>
-	
-	<label for="inputprodidfrom" class="sr-only">ProductID-From</label>
-	<input type="prodidfrom" id="prodidfrom" name="prodidfrom"
-			class="form-control" placeholder="ProductID-From" required>
-	<label for="inputprodidto" class="sr-only">ProductID-To</label>
-	
-	<input type="prodidto" id="prodidto" name="prodidto" class="form-control"
-			placeholder="ProductID-To" required>
-	
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Show</button>
-	
-	<textarea rows="(productidto-productidfrom)" cols="8" placeholder="Products will be displayed here!!!!"></textarea>
-	
-	<div th:replace="~{fragments/footer :: footer}"></div>
+	<form class="form-horizontal" action="#" th:action="@{/product/productshow}" th:object="${showProductForm}" method="POST">
+		<div th:replace="~{fragments/navigation :: navigation}"></div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+		
+		<h5 class="h3 mb-3 fontweight-normal">Provide Details for the Range of ids you want to look At!!!</h5>
+		
+		<label for="inputcatidfrom" class="sr-only">CategoryID-From</label>
+		<input type="number" th:field="*{from}" 
+			class="form-control" placeholder="CategoryID-From" required>
+			
+		<label for="inputcatidto" class="sr-only">CategoryID-To</label>
+		<input type="number" th:field="*{to}"  
+			class="form-control" placeholder="CategoryID-To" required>
+		
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Show</button>
+		
+		<div th:if="${not #lists.isEmpty(products)}">
+			<table>
+				<tr>
+					<th>Product ID</th>
+					<th>Supplier ID</th>
+					<th>Category ID</th>
+					<th>Product Name</th>
+					<th>Unit Price</th>
+					<th>Quantity per Unit</th>
+					<th>Units In Stock</th>
+					<th>Discount Percent</th>
+					<th>Product Status</th>
+				</tr>
+				<tr th:each="product: ${products}">
+					<td th:text="${product.productID}" />
+		    		<td th:text="${product.supplierID}" />
+		    		<td th:text="${product.categoryID}" />
+		    		<td th:text="${product.productName}" />
+		    		<td th:text="${product.unitPrice}" />
+		    		<td th:text="${product.quantityPerUnit}" />
+		    		<td th:text="${product.unitsInStock}" />
+		    		<td th:text="${product.discountPercent}" />
+		    		<td th:text="${product.productStatus}" />
+				</tr>
+			</table>
+		</div>
+
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</form>
 </body>
 </html>

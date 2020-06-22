@@ -1,7 +1,5 @@
 package com.example.retailstore.form.customer;
 
-import java.util.Date;
-
 public class UpdateCustomerForm {
 	
 	private int customerID;

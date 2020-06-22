@@ -99,14 +99,14 @@ public class OrdersController {
 	@PostMapping("/ordershow")
 	public String postOrderShow(@Valid DeleteOrderForm showOrderForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "/orders/orderdelete";
+			return "/orders/ordershow";
 		}
 		else {
 			List<Order> orders = orderService.retrieveAllOrders();
-			model.addAttribute("successMSG", "Order has been deleted successfully!");
+			model.addAttribute("orders", orders);
 			model.addAttribute("showOrderForm", new ShowOrderForm());
 			
-			return "/orders/orderdelete";
+			return "/orders/ordershow";
 		}
 	}
 	

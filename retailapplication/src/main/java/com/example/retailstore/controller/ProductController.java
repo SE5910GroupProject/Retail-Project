@@ -97,16 +97,16 @@ public class ProductController {
 	}
 	
 	@PostMapping("/productshow")
-	public String postProductShow(@Valid DeleteProductForm showProductForm, BindingResult bindingResult, Model model) {
+	public String postProductShow(@Valid ShowProductForm showProductForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "/product/productdelete";
+			return "/product/productshow";
 		}
 		else {
 			List<Product> products = productService.retrieveAllProducts();
-			model.addAttribute("successMSG", "Product has been deleted successfully!");
+			model.addAttribute("products", products);
 			model.addAttribute("showProductForm", new ShowProductForm());
 			
-			return "/product/productdelete";
+			return "/product/productshow";
 		}
 	}
 	

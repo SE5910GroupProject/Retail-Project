@@ -99,14 +99,14 @@ public class OrderDetailsController {
 	@PostMapping("/orderdetailshow")
 	public String postOrderDetailShow(@Valid DeleteOrderDetailsForm showOrderDetailForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "/orderdetails/orderdetaildelete";
+			return "/orderdetails/orderdetailshow";
 		}
 		else {
 			List<OrderDetails> orderDetails = orderDetailService.retrieveAllOrderDetails();
-			model.addAttribute("successMSG", "OrderDetail has been deleted successfully!");
-			model.addAttribute("showOrderDetailForm", new ShowOrderDetailsForm());
+			model.addAttribute("orderDetails", orderDetails);
+			model.addAttribute("showOrderDetailsForm", new ShowOrderDetailsForm());
 			
-			return "/orderdetails/orderdetaildelete";
+			return "/orderdetails/orderdetailshow";
 		}
 	}
 	
