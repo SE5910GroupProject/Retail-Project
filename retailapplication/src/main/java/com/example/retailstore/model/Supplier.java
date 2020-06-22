@@ -17,13 +17,13 @@ public class Supplier {
 	@Column(name = "supplier_id")
 	private int supplierID;
 
-	@Column(name = "company_name", nullable = false)
+	@Column(name = "company_name", nullable = false, length = 50)
 	private String companyName;
 
-	@Column(name = "contact_name", nullable = false)
+	@Column(name = "contact_name", nullable = false, length = 30)
 	private String contactName;
 
-	@Column(name = "contact_designation")
+	@Column(name = "contact_designation", length = 30)
 	private String contactDesignation;
 
 	@Column(name = "phone_number", nullable = false)
@@ -32,13 +32,13 @@ public class Supplier {
 	@Column(name = "address")
 	private String address;
 
-	@Column(name = "city")
+	@Column(name = "city", length = 20)
 	private String city;
 
 	@Column(name = "zip_code")
 	private Integer zipCode;
 
-	@Column(name = "country")
+	@Column(name = "country", length = 15)
 	private String country;
 
 	@Version

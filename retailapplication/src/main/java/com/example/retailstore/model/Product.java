@@ -25,13 +25,13 @@ public class Product {
 	@Column(name = "category_id", nullable = false)
 	private Integer categoryID;
 
-	@Column(name = "product_name", nullable = false)
+	@Column(name = "product_name", nullable = false, length = 50)
 	private String productName;
 
 	@Column(name = "unit_price", nullable = false)
 	private BigDecimal unitPrice;
 
-	@Column(name = "quantity_per_unit", nullable = false)
+	@Column(name = "quantity_per_unit", nullable = false, length = 10)
 	private String quantityPerUnit;
 
 	@Column(name = "units_in_stock", nullable = false)
@@ -40,8 +40,8 @@ public class Product {
 	@Column(name = "discount_percent")
 	private Integer discountPercent;
 
-	@Column(name = "product_status")
-	private Integer productStatus;
+	@Column(name = "product_status", columnDefinition = "integer DEFAULT 1")
+	private Integer productStatus = 1;
 	
 	@Version
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)

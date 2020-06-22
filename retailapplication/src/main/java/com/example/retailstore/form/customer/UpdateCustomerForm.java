@@ -1,27 +1,43 @@
 package com.example.retailstore.form.customer;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 public class UpdateCustomerForm {
 	
-	private int customerID;
+	@NotNull(message = "Customer ID cannot be null.")
+	@Positive(message = "Customer ID must be a positive integer.")
+	private Integer customerID;
+	
+	@NotNull(message = "First Name cannot be null.")
+	@Size(min=1, max=30, message = "First Name must be between 1 and 30 characters long.")
 	private String firstName;
+	
+	@Size(min=1, max=30, message = "Last Name must be between 1 and 30 characters long.")
 	private String lastName;
+	
 	private String address;
+	
+	@Size(min=1, max=20, message = "City must be between 1 and 20 characters long.")
 	private String city;
 	
-	@NotNull(message = "Zip Code must not be null.")
+	@Positive(message = "Zip Code must be positive.")
 	private Integer zipCode;
 	
+	@Size(min=1, max=32, message = "Country must be between 1 and 32 characters long.")
 	private String country;
+	
+	@Positive(message = "Phone Number must be positive.")
 	private Long phoneNumber;
+	
 	private String birthDate;
 	
-	public int getCustomerID() {
+	public Integer getCustomerID() {
 		return customerID;
 	}
 
-	public void setCustomerID(int customerID) {
+	public void setCustomerID(Integer customerID) {
 		this.customerID = customerID;
 	}
 	

@@ -40,7 +40,9 @@
 			
 			<label for="inputcatid" class="sr-only">Category ID</label>
 			<input type="number" th:field="*{categoryID}"
-				class="form-control" placeholder="Category ID" required>
+				class="form-control" placeholder="Category ID (Required)" required>
+			<p th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}">Category ID Error</p>
+			
 			
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 			

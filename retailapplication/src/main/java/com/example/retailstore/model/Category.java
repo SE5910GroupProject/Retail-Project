@@ -17,10 +17,10 @@ public class Category {
 	@Column(name = "category_id")
 	private int categoryID;
 
-	@Column(name = "category_name", nullable = false)
+	@Column(name = "category_name", nullable = false, length = 30, unique = true)
 	private String categoryName;
 
-	@Column(name = "description")
+	@Column(name = "description", length = 50)
 	private String description;
 	
 	@Version

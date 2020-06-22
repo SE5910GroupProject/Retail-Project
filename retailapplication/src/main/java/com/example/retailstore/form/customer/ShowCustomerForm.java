@@ -1,8 +1,16 @@
 package com.example.retailstore.form.customer;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 public class ShowCustomerForm {
 
+	@NotNull(message = "From-ID cannot be null.")
+	@Positive(message = "From-ID must be a positive integer.")
 	private Integer from;
+	
+	@NotNull(message = "To-ID cannot be null.")
+	@Positive(message = "To-ID must be a positive integer.")
 	private Integer to;
 	
 	public Integer getFrom() {

@@ -40,7 +40,8 @@
 			
 		<label for="inputsupplierid" class="sr-only">Supplier ID</label>
 		<input type="number" th:field="*{supplierID}" 
-				class="form-control" placeholder="Supplier ID" required>
+			class="form-control" placeholder="Supplier ID (Required)" required>
+		 <p th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">Supplier ID Error</p>
 				
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 		

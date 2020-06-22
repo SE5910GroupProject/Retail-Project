@@ -2,20 +2,40 @@ package com.example.retailstore.form.orderdetails;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+
 public class UpdateOrderDetailsForm {
 	
-	private int orderDetailsID;
+	@NotNull(message = "Order Details ID cannot be null.")
+	@Positive(message = "Order Details ID must be a positive integer.")
+	private Integer orderDetailsID;
+	
+	@NotNull(message = "Order ID cannot be null.")
+	@Positive(message = "Order ID must be a positive integer.")
 	private Integer orderID;
+	
+	@NotNull(message = "Product ID cannot be null.")
+	@Positive(message = "Product ID must be a positive integer.")
 	private Integer productID;
+	
+	@NotNull(message = "Quantity cannot be null.")
+	@Positive(message = "Quantity must be a positive integer.")
 	private Integer quantity;
+	
+	@NotNull(message = "Unit Price cannot be null.")
+	@Positive(message = "Unit Price must be a positive integer.")
 	private BigDecimal unitPrice;
+	
+	@PositiveOrZero(message = "Discount must be zero or a positive integer.")
 	private BigDecimal discount;
 	
-	public int getOrderDetailsID() {
+	public Integer getOrderDetailsID() {
 		return orderDetailsID;
 	}
 	
-	public void setOrderDetailsID(int orderDetailsID) {
+	public void setOrderDetailsID(Integer orderDetailsID) {
 		this.orderDetailsID = orderDetailsID;
 	}
 	

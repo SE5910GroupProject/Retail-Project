@@ -42,15 +42,18 @@
 		
 		<label for="inputcustid" class="sr-only">Customer ID</label>
 		<input type="number" th:field="*{customerID}"
-			class="form-control" placeholder="Customer ID" required>
+			class="form-control" placeholder="Customer ID (Required)" required>
+		<p th:if="${#fields.hasErrors('customerID')}" th:errors="*{customerID}">Customer ID Error</p>
 			
 		<label for="inputuserid" class="sr-only">User ID</label>
 		<input type="number" th:field="*{userID}" 
-			class="form-control" placeholder="User ID" required>
+			class="form-control" placeholder="User ID (Required)" required>
+		<p th:if="${#fields.hasErrors('userID')}" th:errors="*{userID}">User ID Error</p>
 			
 		<label for="inputorderpurchasedate" class="sr-only">Purchase Date</label>
 		<input type="date" th:field="*{purchaseDate}"
-			class="form-control" placeholder="Purchase Date" required>
+			class="form-control" placeholder="Purchase Date (Required)" required>
+		<p th:if="${#fields.hasErrors('purchaseDate')}" th:errors="*{purchaseDate}">Purchase Date Error</p>
 			
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Insert</button>
 		

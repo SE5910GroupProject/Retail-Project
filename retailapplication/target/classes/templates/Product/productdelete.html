@@ -39,10 +39,10 @@
 			</div>
 		</div>
 		
-		<label for="inputprodid" class="sr-only">Product ID</label>
-		<input  type="number" th:field="*{productID}"
-			 	class="form-control" placeholder="Product ID" required>
-		<p th:if="${#fields.hasErrors('productID')}" th:errors="*{productID}">Product Name Error</p>
+		 <label for="inputprodid" class="sr-only">Product ID</label>
+		 <input  type="number" th:field="*{productID}"
+		 	class="form-control" placeholder="Product ID (Required)" required>
+	     <p th:if="${#fields.hasErrors('productID')}" th:errors="*{productID}">Product ID Error</p>
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 		<div th:replace="~{fragments/footer :: footer}"></div>

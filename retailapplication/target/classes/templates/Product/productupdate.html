@@ -48,43 +48,48 @@
 	     
 		 <label for="inputprodid" class="sr-only">Product ID</label>
 		 <input  type="number" th:field="*{productID}"
-		 	class="form-control" placeholder="Product ID" required>
+		 	class="form-control" placeholder="Product ID (Required)" required>
+	     <p th:if="${#fields.hasErrors('productID')}" th:errors="*{productID}">Product ID Error</p>
 	     
-		 <label for="inputprodname" class="sr-only">ProductName</label>
+		 <label for="inputprodname" class="sr-only">Product Name</label>
 		 <input type="text" th:field="*{productName}"
-		 	class="form-control" placeholder="Product Name" required>
+		 	class="form-control" placeholder="Product Name (Required)" required>
 	     <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product Name Error</p>
 	     
-		 <label for="inputprodsupplierid" class="sr-only">SupplierID</label>
+		 <label for="inputprodsupplierid" class="sr-only">Supplier ID</label>
 		 <input type="number" th:field="*{supplierID}"
-		 	class="form-control" placeholder="Supplier ID" required>
+		 	class="form-control" placeholder="Supplier ID (Required)" required>
+	     <p th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">Supplier ID Error</p>
 	     
-		 <label for="inputprodcatid" class="sr-only">CategoryID</label>
+		 <label for="inputprodcatid" class="sr-only">Category ID</label>
 		 <input type="number" th:field="*{categoryID}"
-		 	class="form-control" placeholder="Category ID" required>
+		 	class="form-control" placeholder="Category ID (Required)" required>
+		 <p th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}">Category ID Error</p>
 	     
 		 <label for="inputprodunitprice" class="sr-only">Unit Price</label>
 		 <input type="number" th:field="*{unitPrice}"
-		 	class="form-control" placeholder="Unit Price" required>
+		 	class="form-control" placeholder="Unit Price (Required)" required>
+		 <p th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">Unit Price Error</p>
 	     
-		 <label for="inputprodquantityperunit" class="sr-only">Quantity
-		 	Per Unit</label>
+		 <label for="inputprodquantityperunit" class="sr-only">Quantity Per Unit</label>
 		 <input type="text" th:field="*{quantityPerUnit}"
-		 	class="form-control" placeholder="Quantity Per Unit" required>
+		 	class="form-control" placeholder="Quantity Per Unit (Required)" required>
+		 <p th:if="${#fields.hasErrors('quantityPerUnit')}" th:errors="*{quantityPerUnit}">Quantity per Unit Error</p>
 	     
-		 <label for="inputprodunitsinstock" class="sr-only">Units In
-		 	Stock</label>
+		 <label for="inputprodunitsinstock" class="sr-only">Units In Stock</label>
 		 <input type="number" th:field="*{unitsInStock}"
-		 	class="form-control" placeholder="Units In Stock" required>
+		 	class="form-control" placeholder="Units In Stock (Required)" required>
+		 <p th:if="${#fields.hasErrors('unitsInStock')}" th:errors="*{unitsInStock}">Units In Stock Error</p>
 	     
-		 <label for="inputproddiscountpercent" class="sr-only">Discount
-		 	Percent</label>
+		 <label for="inputproddiscountpercent" class="sr-only">Discount Percent</label>
 		 <input type="number" th:field="*{discountPercent}" 
-		 	class="form-control" placeholder="Discount Percent" required>
+		 	class="form-control" placeholder="Discount Percent" >
+		 <p th:if="${#fields.hasErrors('discountPercent')}" th:errors="*{discountPercent}">Discount Percent Error</p>
 	     
 		 <label for="inputprodstatus" class="sr-only">Product Status</label>
 		 <input type="number" th:field="*{productStatus}"
-		 	class="form-control" placeholder="Product Status" required>
+		 	class="form-control" placeholder="Product Status" >
+		 <p th:if="${#fields.hasErrors('productStatus')}" th:errors="*{productStatus}">Product Status Error</p>
 	     
 		 <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
 	     

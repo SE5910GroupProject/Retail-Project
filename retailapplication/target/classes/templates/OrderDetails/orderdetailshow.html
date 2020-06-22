@@ -32,13 +32,15 @@
 		
 		<h5 class="h3 mb-3 fontweight-normal">Provide Details for the Range of ids you want to look At!!!</h5>
 		
-		<label for="inputcatidfrom" class="sr-only">CategoryID-From</label>
+		<label for="inputcatidfrom" class="sr-only">Order Details ID - From</label>
 		<input type="number" th:field="*{from}" 
-			class="form-control" placeholder="CategoryID-From" required>
-			
-		<label for="inputcatidto" class="sr-only">CategoryID-To</label>
+			class="form-control" placeholder="Order Details ID - From (Required)" required>
+		<p th:if="${#fields.hasErrors('from')}" th:errors="*{from}">From Error</p>
+		
+		<label for="inputcatidto" class="sr-only">Order Details - To</label>
 		<input type="number" th:field="*{to}"  
-			class="form-control" placeholder="CategoryID-To" required>
+			class="form-control" placeholder="Order Details ID - To (Required)" required>
+		<p th:if="${#fields.hasErrors('to')}" th:errors="*{to}">To Error</p>
 			
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Show</button>
 		

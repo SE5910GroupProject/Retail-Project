@@ -42,7 +42,8 @@
 		
 		<label for="inputcustdid" class="sr-only">Customer ID</label>
 		<input type="number" th:field="*{customerID}" 
-			class="form-control" placeholder="Customer ID" required>
+			class="form-control" placeholder="Customer ID (Required)" required>
+		<p th:if="${#fields.hasErrors('customerID')}" th:errors="*{customerID}">Customer ID Error</p>
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 		

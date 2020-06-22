@@ -17,22 +17,22 @@ public class Customer {
 	@Column(name = "customer_id")
 	private int customerID;
 	
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "first_name", nullable = false, length = 30)
 	private String firstName;
 	
-	@Column(name = "last_name")
+	@Column(name = "last_name", length = 30)
 	private String lastName;
 	
 	@Column(name = "address")
 	private String address;
 	
-	@Column(name = "city")
+	@Column(name = "city", length = 20)
 	private String city;
 	
 	@Column(name = "zip_code")
 	private Integer zipCode;
 	
-	@Column(name = "country")
+	@Column(name = "country", length = 32)
 	private String country;
 	
 	@Column(name = "phone_number")

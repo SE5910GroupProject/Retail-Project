@@ -20,13 +20,13 @@ public class OrderDetails {
 	private int orderDetailsID;
 	
 	@Column(name = "order_id", nullable = false)
-	private int orderID;
+	private Integer orderID;
 	
 	@Column(name = "product_id", nullable = false)
-	private int productID;
+	private Integer productID;
 	
 	@Column(name = "quantity", nullable = false)
-	private int quantity;
+	private Integer quantity;
 	
 	@Column(name = "unit_price", nullable = false)
 	private BigDecimal unitPrice;
@@ -46,27 +46,27 @@ public class OrderDetails {
 		this.orderDetailsID = orderDetailsID;
 	}
 
-	public int getOrderID() {
+	public Integer getOrderID() {
 		return orderID;
 	}
 
-	public void setOrderID(int orderID) {
+	public void setOrderID(Integer orderID) {
 		this.orderID = orderID;
 	}
 
-	public int getProductID() {
+	public Integer getProductID() {
 		return productID;
 	}
 
-	public void setProductID(int productID) {
+	public void setProductID(Integer productID) {
 		this.productID = productID;
 	}
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 

@@ -42,8 +42,9 @@
 		
 		<label for="inputorderid" class="sr-only">Order ID</label>
 		<input type="number" th:field="*{orderID}"
-			class="form-control" placeholder="Order ID" required>
-			
+			class="form-control" placeholder="Order ID (Required)" required>
+		<p th:if="${#fields.hasErrors('orderID')}" th:errors="*{orderID}">Order ID Error</p>
+		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 		
 		<div th:replace="~{fragments/footer :: footer}"></div>

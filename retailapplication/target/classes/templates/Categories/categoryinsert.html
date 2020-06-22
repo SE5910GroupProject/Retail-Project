@@ -40,11 +40,13 @@
 			
 			<label for="inputcatname" class="sr-only">Category Name</label>
 			<input type="text" th:field="*{categoryName}" 
-					class="form-control"placeholder="Category Name" required>
+					class="form-control"placeholder="Category Name (Required)" required>
+			<p th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}">Category Name Error</p>
 			
 			<label for="inputcatdesc" class="sr-only">Description</label>
 			<input type="text" th:field="*{description}"
-					class="form-control" placeholder="Description" required>
+					class="form-control" placeholder="Description" >
+			<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</p>
 			
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Insert</button>
 			

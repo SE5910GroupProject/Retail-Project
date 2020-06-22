@@ -42,23 +42,28 @@
 		
 		<label for="inputorderid" class="sr-only">Order ID</label>
 		<input type="number" th:field="*{orderID}"
-				class="form-control" placeholder="Order ID" required>
+				class="form-control" placeholder="Order ID (Required)" required>
+		<p th:if="${#fields.hasErrors('orderID')}" th:errors="*{orderID}">Order ID Error</p>
 			
 		<label for="inputprodid" class="sr-only">Product ID</label>
 		<input type="number" th:field="*{productID}"
-			class="form-control" placeholder="Product ID" required>
+			class="form-control" placeholder="Product ID (Required)" required>
+		<p th:if="${#fields.hasErrors('productID')}" th:errors="*{productID}">Product ID Error</p>
 			
 		<label for="inputquantity" class="sr-only">Product Quantity</label>
 		<input type="number" th:field="*{quantity}"
-			class="form-control" placeholder="Product Quantity" required>
-			
-		<label for="inputunitprice" class="sr-only">Product UnitPrice</label>
+			class="form-control" placeholder="Product Quantity (Required)" required>
+		<p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity Error</p>
+		
+		<label for="inputunitprice" class="sr-only">Product Unit Price</label>
 		<input type="number" th:field="*{unitPrice}"
-			class="form-control" placeholder="Product Unit Price" required>
+			class="form-control" placeholder="Product Unit Price (Required)" required>
+		<p th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">Unit Price Error</p>
 			
 		<label for="inputdiscount" class="sr-only">Product Discount</label>
 		<input type="number" th:field="*{discount}"
-			class="form-control" placeholder="Product Discount" required>
+			class="form-control" placeholder="Product Discount" >
+		<p th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}">Discount Error</p>
 			
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Insert</button>
 		

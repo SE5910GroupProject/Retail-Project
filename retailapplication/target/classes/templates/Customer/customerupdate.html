@@ -41,39 +41,48 @@
 		
 		<label for="inputcustdid" class="sr-only">Customer ID</label>
 		<input type="number" th:field="*{customerID}" 
-			class="form-control" placeholder="Customer ID" required>
-			
+			class="form-control" placeholder="Customer ID (Required)" required>
+		<p th:if="${#fields.hasErrors('customerID')}" th:errors="*{customerID}">Customer ID Error</p>
+		
 		<label for="inputcustfirstname" class="sr-only">First Name</label>
 		<input type="text" th:field="*{firstName}" 
-			class="form-control" placeholder="First Name" required>
+			class="form-control" placeholder="First Name (Required)" required>
+		<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</p>
 		
 		<label for="inputcustlastname" class="sr-only">Last Name</label>
 		<input type="text" th:field="*{lastName}" 
-			class="form-control" placeholder="Last Name" required>
+			class="form-control" placeholder="Last Name" >
+		<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</p>
 			
 		<label for="inputcustaddress" class="sr-only">Address</label>
 		<input type="text" th:field="*{address}" 
-			class="form-control" placeholder="Address" required>
+			class="form-control" placeholder="Address" >
+		<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</p>
 			
 		<label for="inputcustcity" class="sr-only">City</label>
 		<input type="text" th:field="*{city}" 
-			class="form-control" placeholder="City" required>
+			class="form-control" placeholder="City" >
+		<p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City Error</p>
 			
 		<label for="inputcustzip" class="sr-only">Zip</label>
 		<input type="number" th:field="*{zipCode}" 
-			class="form-control" placeholder="Zip" required>
+			class="form-control" placeholder="Zip" >
+		<p th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Zip Code Error</p>
 		
 		<label for="inputcustcountry" class="sr-only">Country</label>
 		<input type="text" th:field="*{country}" 
-			class="form-control" placeholder="Country" required>
+			class="form-control" placeholder="Country" >
+		<p th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Country Error</p>
 		
 		<label for="inputcustphno" class="sr-only">Phone Number</label>
-		<input type="String" th:field="*{phoneNumber}" 
-			class="form-control" placeholder="Phone Number" required>
+		<input type="number" th:field="*{phoneNumber}" 
+			class="form-control" placeholder="Phone Number" >
+		<p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</p>
 		
 		<label for="inputcustbirthdate" class="sr-only">Date Of Birth</label>
-			<input type="date" th:field="*{birthDate}" 
-			class="form-control" placeholder="Date Of Birth" required>
+		<input type="date" th:field="*{birthDate}" 
+			class="form-control" placeholder="Date Of Birth" >
+		<p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Birth Date Error</p>
 			
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
 		
