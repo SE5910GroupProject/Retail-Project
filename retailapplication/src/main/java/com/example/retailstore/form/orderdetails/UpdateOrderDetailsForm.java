@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class UpdateOrderDetailsForm {
 	
 	private int orderDetailsID;
-	private int orderID;
-	private int productID;
-	private int quantity;
+	private Integer orderID;
+	private Integer productID;
+	private Integer quantity;
 	private BigDecimal unitPrice;
 	private BigDecimal discount;
 	
@@ -19,27 +19,27 @@ public class UpdateOrderDetailsForm {
 		this.orderDetailsID = orderDetailsID;
 	}
 	
-	public int getOrderID() {
+	public Integer getOrderID() {
 		return orderID;
 	}
 	
-	public void setOrderID(int orderID) {
+	public void setOrderID(Integer orderID) {
 		this.orderID = orderID;
 	}
 	
-	public int getProductID() {
+	public Integer getProductID() {
 		return productID;
 	}
 	
-	public void setProductID(int productID) {
+	public void setProductID(Integer productID) {
 		this.productID = productID;
 	}
 	
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 	
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	
