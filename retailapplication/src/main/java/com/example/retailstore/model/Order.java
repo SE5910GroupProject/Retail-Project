@@ -1,10 +1,16 @@
 package com.example.retailstore.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -17,11 +23,13 @@ public class Order {
 	@Column(name = "order_id")
 	private int orderID;
 	
-	@Column(name = "customer_id", nullable = false)
-	private Integer customerID;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customers.id", nullable = false)
+	private Customer customer;
 	
-	@Column(name = "user_id", nullable = false)
-	private Integer userID;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "users.id", nullable = false)
+	private User user;
 	
 	@Column(name = "purchase_date", nullable = false)
 	private String purchaseDate;
@@ -29,6 +37,9 @@ public class Order {
 	@Version
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
 	private Integer version = 0;
+	
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<OrderDetails> orderDetails;
 	
 	
 	public int getOrderID() {
@@ -39,20 +50,20 @@ public class Order {
 		this.orderID = orderID;
 	}
 	
-	public Integer getCustomerID() {
-		return customerID;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerID(Integer customerID) {
-		this.customerID = customerID;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public Integer getUserID() {
-		return userID;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserID(Integer userID) {
-		this.userID = userID;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public String getPurchaseDate() {
@@ -69,6 +80,14 @@ public class Order {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 	
 }

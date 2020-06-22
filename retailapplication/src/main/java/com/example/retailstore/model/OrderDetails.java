@@ -4,9 +4,12 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -19,11 +22,13 @@ public class OrderDetails {
 	@Column(name = "order_details_id")
 	private int orderDetailsID;
 	
-	@Column(name = "order_id", nullable = false)
-	private Integer orderID;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "orders.id", nullable = false)
+	private Order order;
 	
-	@Column(name = "product_id", nullable = false)
-	private Integer productID;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "products.id", nullable = false)
+	private Product product;
 	
 	@Column(name = "quantity", nullable = false)
 	private Integer quantity;
@@ -45,21 +50,21 @@ public class OrderDetails {
 	public void setOrderDetailsID(int orderDetailsID) {
 		this.orderDetailsID = orderDetailsID;
 	}
-
-	public Integer getOrderID() {
-		return orderID;
+	
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderID(Integer orderID) {
-		this.orderID = orderID;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	public Integer getProductID() {
-		return productID;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductID(Integer productID) {
-		this.productID = productID;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Integer getQuantity() {
@@ -93,7 +98,5 @@ public class OrderDetails {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	
-
 	
 }

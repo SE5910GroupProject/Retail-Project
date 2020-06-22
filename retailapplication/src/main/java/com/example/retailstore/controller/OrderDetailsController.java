@@ -15,7 +15,9 @@ import com.example.retailstore.form.orderdetails.CreateOrderDetailsForm;
 import com.example.retailstore.form.orderdetails.DeleteOrderDetailsForm;
 import com.example.retailstore.form.orderdetails.ShowOrderDetailsForm;
 import com.example.retailstore.form.orderdetails.UpdateOrderDetailsForm;
+import com.example.retailstore.model.Order;
 import com.example.retailstore.model.OrderDetails;
+import com.example.retailstore.model.Product;
 import com.example.retailstore.service.OrderDetailsService;
 
 @Controller
@@ -112,8 +114,15 @@ public class OrderDetailsController {
 	
 	private OrderDetails convertCreateToBO(CreateOrderDetailsForm form) {
 		OrderDetails orderDetail = new OrderDetails();
-		orderDetail.setOrderID(form.getOrderID());
-		orderDetail.setProductID(form.getProductID());
+		
+		Order order = new Order();
+		order.setOrderID(form.getOrderID());
+		Product product = new Product();
+		product.setProductID(form.getProductID());
+		
+		orderDetail.setOrder(order);
+		orderDetail.setProduct(product);
+		
 		orderDetail.setUnitPrice(form.getUnitPrice());
 		orderDetail.setDiscount(form.getDiscount());
 		return orderDetail;
@@ -122,8 +131,15 @@ public class OrderDetailsController {
 	private OrderDetails convertUpdateToBO(UpdateOrderDetailsForm form) {
 		OrderDetails orderDetail = new OrderDetails();
 		orderDetail.setOrderDetailsID(form.getOrderDetailsID());
-		orderDetail.setOrderID(form.getOrderID());
-		orderDetail.setProductID(form.getProductID());
+		
+		Order order = new Order();
+		order.setOrderID(form.getOrderID());
+		Product product = new Product();
+		product.setProductID(form.getProductID());
+		
+		orderDetail.setOrder(order);
+		orderDetail.setProduct(product);
+		
 		orderDetail.setUnitPrice(form.getUnitPrice());
 		orderDetail.setDiscount(form.getDiscount());
 		return orderDetail;

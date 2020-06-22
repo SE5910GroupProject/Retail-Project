@@ -15,7 +15,9 @@ import com.example.retailstore.form.product.CreateProductForm;
 import com.example.retailstore.form.product.DeleteProductForm;
 import com.example.retailstore.form.product.ShowProductForm;
 import com.example.retailstore.form.product.UpdateProductForm;
+import com.example.retailstore.model.Category;
 import com.example.retailstore.model.Product;
+import com.example.retailstore.model.Supplier;
 import com.example.retailstore.service.ProductsService;
 
 @Controller
@@ -112,8 +114,15 @@ public class ProductController {
 	
 	private Product convertCreateToBO(CreateProductForm form) {
 		Product product = new Product();
-		product.setSupplierID(form.getSupplierID());
-		product.setCategoryID(form.getCategoryID());
+		
+		Supplier supplier = new Supplier();
+		supplier.setSupplierID(form.getSupplierID());
+		Category category = new Category();
+		category.setCategoryID(form.getCategoryID());
+		
+		product.setSupplier(supplier);
+		product.setCategory(category);
+		
 		product.setProductName(form.getProductName());
 		product.setUnitPrice(form.getUnitPrice());
 		product.setQuantityPerUnit(form.getQuantityPerUnit());
@@ -125,9 +134,16 @@ public class ProductController {
 	
 	private Product convertUpdateToBO(UpdateProductForm form) {
 		Product product = new Product();
+		
 		product.setProductID(form.getProductID());
-		product.setSupplierID(form.getSupplierID());
-		product.setCategoryID(form.getCategoryID());
+		Supplier supplier = new Supplier();
+		supplier.setSupplierID(form.getSupplierID());
+		Category category = new Category();
+		category.setCategoryID(form.getCategoryID());
+		
+		product.setSupplier(supplier);
+		product.setCategory(category);
+		
 		product.setProductName(form.getProductName());
 		product.setUnitPrice(form.getUnitPrice());
 		product.setQuantityPerUnit(form.getQuantityPerUnit());

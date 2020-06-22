@@ -1,10 +1,14 @@
 package com.example.retailstore.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -44,6 +48,9 @@ public class Supplier {
 	@Version
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
 	private Integer version = 0;
+	
+	@OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<Product> products;
 
 	public int getSupplierID() {
 		return supplierID;
@@ -123,6 +130,14 @@ public class Supplier {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 	
 }

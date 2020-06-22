@@ -15,7 +15,9 @@ import com.example.retailstore.form.order.CreateOrderForm;
 import com.example.retailstore.form.order.DeleteOrderForm;
 import com.example.retailstore.form.order.ShowOrderForm;
 import com.example.retailstore.form.order.UpdateOrderForm;
+import com.example.retailstore.model.Customer;
 import com.example.retailstore.model.Order;
+import com.example.retailstore.model.User;
 import com.example.retailstore.service.OrdersService;
 
 @Controller
@@ -112,8 +114,15 @@ public class OrdersController {
 	
 	private Order convertCreateToBO(CreateOrderForm form) {
 		Order order = new Order();
-		order.setCustomerID(form.getCustomerID());
-		order.setUserID(form.getUserID());
+		
+		Customer customer = new Customer();
+		customer.setCustomerID(form.getCustomerID());
+		User user = new User();
+		user.setId(form.getUserID());
+		
+		order.setCustomer(customer);
+		order.setUser(user);
+		
 		order.setPurchaseDate(form.getPurchaseDate());
 		return order;
 	}
@@ -121,8 +130,15 @@ public class OrdersController {
 	private Order convertUpdateToBO(UpdateOrderForm form) {
 		Order order = new Order();
 		order.setOrderID(form.getOrderID());
-		order.setCustomerID(form.getCustomerID());
-		order.setUserID(form.getUserID());
+		
+		Customer customer = new Customer();
+		customer.setCustomerID(form.getCustomerID());
+		User user = new User();
+		user.setId(form.getUserID());
+		
+		order.setCustomer(customer);
+		order.setUser(user);
+		
 		order.setPurchaseDate(form.getPurchaseDate());
 		return order;
 	}
