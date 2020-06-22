@@ -1,20 +1,94 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="h-100">
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
-  <link rel="stylesheet" th:href="@{css/tabstyle.css}">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+<link rel="stylesheet" th:href="@{css/tabstyle.css}">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Update Product</title>
 </head>
 <body class="d-flex flex-column h-100">
-<div th:replace="~{fragments/navigation :: navigation}"></div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<h2>ProductsUpdate</h2>
-<div th:replace="~{fragments/footer :: footer}"></div>
+	<form class="form-horizontal" action="#" th:action="@{/product/productupdate}" th:object="${updateProductForm}" method="POST">
+		 <div th:replace="~{fragments/navigation :: navigation}"></div>
+		 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		 	crossorigin="anonymous"></script>
+		 <script
+		 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		 	crossorigin="anonymous"></script>
+	     
+		 <div class="row">
+		 	<div class="col-md-3"></div>
+		 	<div class="col-md-6">
+		 		<div class="alert alert-success" role="alert" th:if="${successMSG}"
+		 			th:utext="${successMSG}"></div>
+		 	</div>
+		 </div>
+	     
+		 <h5 class="h3 mb-3 fontweight-normal">Provide Details for the product you want to Update</h5>
+	     
+	     <div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="alert alert-success" role="alert" th:if="${successMSG}" th:utext="${successMSG}">
+				</div>
+			</div>
+		</div>
+	     
+		 <label for="inputprodid" class="sr-only">Product ID</label>
+		 <input  type="number" th:field="*{productID}"
+		 	class="form-control" placeholder="Product ID" required>
+	     
+		 <label for="inputprodname" class="sr-only">ProductName</label>
+		 <input type="text" th:field="*{productName}"
+		 	class="form-control" placeholder="Product Name" required>
+	     <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product Name Error</p>
+	     
+		 <label for="inputprodsupplierid" class="sr-only">SupplierID</label>
+		 <input type="number" th:field="*{supplierID}"
+		 	class="form-control" placeholder="Supplier ID" required>
+	     
+		 <label for="inputprodcatid" class="sr-only">CategoryID</label>
+		 <input type="number" th:field="*{categoryID}"
+		 	class="form-control" placeholder="Category ID" required>
+	     
+		 <label for="inputprodunitprice" class="sr-only">Unit Price</label>
+		 <input type="number" th:field="*{unitPrice}"
+		 	class="form-control" placeholder="Unit Price" required>
+	     
+		 <label for="inputprodquantityperunit" class="sr-only">Quantity
+		 	Per Unit</label>
+		 <input type="number" th:field="*{quantityPerUnit}"
+		 	class="form-control" placeholder="Quantity Per Unit" required>
+	     
+		 <label for="inputprodunitsinstock" class="sr-only">Units In
+		 	Stock</label>
+		 <input type="number" th:field="*{unitsInStock}"
+		 	class="form-control" placeholder="Units In Stock" required>
+	     
+		 <label for="inputproddiscountpercent" class="sr-only">Discount
+		 	Percent</label>
+		 <input type="number" th:field="*{discountPercent}" 
+		 	class="form-control" placeholder="Discount Percent" required>
+	     
+		 <label for="inputprodstatus" class="sr-only">Product Status</label>
+		 <input type="number" th:field="*{productStatus}"
+		 	class="form-control" placeholder="Product Status" required>
+	     
+		 <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+	     
+		 <div th:replace="~{fragments/footer :: footer}"></div>
+	</form>
 </body>
 </html>

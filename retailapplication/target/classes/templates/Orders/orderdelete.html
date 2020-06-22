@@ -15,12 +15,13 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <link rel="stylesheet" th:href="@{css/tabstyle.css}">
 <meta charset="ISO-8859-1">
-<title>Delete Product</title>
+<title>Delete Order</title>
 </head>
-
 <body class="d-flex flex-column h-100">
-	<form class="form-horizontal" action="#" th:action="@{/product/productdelete}" th:object="${deleteProductForm}" method="POST">
+	<form class="form-horizontal" action="#" th:action="@{/orders/orderdelete}" th:object="${deleteOrderForm}" method="POST">
+		
 		<div th:replace="~{fragments/navigation :: navigation}"></div>
+		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 			crossorigin="anonymous"></script>
@@ -29,7 +30,7 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"></script>
 		
-		<h5 class="h3 mb-3 fontweight-normal">Provide Details for the product you want to Delete</h5>
+		<h5 class="h3 mb-3 fontweight-normal">Provide Details for the Order you want to Delete</h5>
 		
 		<div class="row">
 			<div class="col-md-3"></div>
@@ -39,13 +40,14 @@
 			</div>
 		</div>
 		
-		<label for="inputprodid" class="sr-only">Product ID</label>
-		<input  type="number" th:field="*{productID}"
-			 	class="form-control" placeholder="Product ID" required>
-		<p th:if="${#fields.hasErrors('productID')}" th:errors="*{productID}">Product Name Error</p>
-		
+		<label for="inputorderid" class="sr-only">Order ID</label>
+		<input type="number" th:field="*{orderID}"
+			class="form-control" placeholder="Order ID" required>
+			
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+		
 		<div th:replace="~{fragments/footer :: footer}"></div>
+		
 	</form>
 </body>
 </html>
