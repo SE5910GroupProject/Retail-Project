@@ -48,7 +48,10 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 	@Override
 	public void updateOrderDetails(OrderDetails orderDetails) {
 		//ADD CONFIRMATION TO NOT ALLOW INSERTING
-		if( orderDetailsRepository.existsById(orderDetails.getOrderDetailsID()) ) {
+		Optional<OrderDetails> orderDetails2 = orderDetailsRepository.findById(orderDetails.getOrderDetailsID());
+		
+		if(orderDetails2.isPresent()) {
+			orderDetails.setVersion(orderDetails2.get().getVersion());
 			orderDetailsRepository.save(orderDetails);
 		}
 		

@@ -1,6 +1,7 @@
 package com.example.retailstore.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "product_id")
+	@Column(name = "products_id")
 	private int productID;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -55,7 +56,7 @@ public class Product {
 	private Integer version = 0;
 	
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<OrderDetails> orderDetails;
+	private List<OrderDetails> orderDetails = new ArrayList<>();
 
 	public int getProductID() {
 		return productID;
@@ -142,7 +143,7 @@ public class Product {
 	}
 
 	public void setOrderDetails(List<OrderDetails> orderDetails) {
-		this.orderDetails = orderDetails;
+		this.orderDetails.addAll(orderDetails);
 	}
 	
 }

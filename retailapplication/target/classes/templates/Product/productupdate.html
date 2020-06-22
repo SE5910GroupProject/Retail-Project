@@ -56,15 +56,19 @@
 		 	class="form-control" placeholder="Product Name (Required)" required>
 	     <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product Name Error</p>
 	     
-		 <label for="inputprodsupplierid" class="sr-only">Supplier ID</label>
-		 <input type="number" th:field="*{supplierID}"
-		 	class="form-control" placeholder="Supplier ID (Required)" required>
-	     <p th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">Supplier ID Error</p>
-	     
-		 <label for="inputprodcatid" class="sr-only">Category ID</label>
-		 <input type="number" th:field="*{categoryID}"
-		 	class="form-control" placeholder="Category ID (Required)" required>
-		 <p th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}">Category ID Error</p>
+		<select th:field="*{supplierID}" class="form-control" required>
+			<option value="">Select a Supplier (Required)</option>
+			<option th:each="supplier : ${suppliers}" th:value="${supplier.supplierID}" th:text="${supplier.companyName}">
+			</option>
+		</select>
+	    <p th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">Supplier ID Error</p>
+	    
+		<select th:field="*{categoryID}" class="form-control" required>
+			<option value="">Select a Category (Required)</option>
+			<option th:each="category : ${categories}" th:value="${category.categoryID}" th:text="${category.categoryName}">
+			</option>
+		</select>
+	    <p th:if="${#fields.hasErrors('categoryID')}" th:errors="*{categoryID}">Category ID Error</p>
 	     
 		 <label for="inputprodunitprice" class="sr-only">Unit Price</label>
 		 <input type="number" th:field="*{unitPrice}"

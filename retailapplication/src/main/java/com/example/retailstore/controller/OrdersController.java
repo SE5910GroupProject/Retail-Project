@@ -18,7 +18,9 @@ import com.example.retailstore.form.order.UpdateOrderForm;
 import com.example.retailstore.model.Customer;
 import com.example.retailstore.model.Order;
 import com.example.retailstore.model.User;
+import com.example.retailstore.service.CustomersService;
 import com.example.retailstore.service.OrdersService;
+import com.example.retailstore.service.UserService;
 
 @Controller
 @RequestMapping("/orders")
@@ -27,19 +29,29 @@ public class OrdersController {
 	@Autowired
 	OrdersService orderService;
 	
+	@Autowired
+	CustomersService CustomersService;
+	
+	@Autowired
+	UserService userService;
+	
 	@GetMapping("/orderindex")
 	public String getOrder() {
 		return "/orders/orderindex";
 	}
 
 	@GetMapping("/orderinsert")
-	public String getOrderInsert(CreateOrderForm createOrderForm) {
+	public String getOrderInsert(CreateOrderForm createOrderForm, Model model) {
+		
+		addModelAttributes(model);
 		
 		return "/orders/orderinsert";
 	}
 	
 	@PostMapping("/orderinsert")
 	public String postOrderInsert(@Valid CreateOrderForm createOrderForm, BindingResult bindingResult, Model model) {
+		
+		addModelAttributes(model);
 		
 		if(bindingResult.hasErrors()) {
 			return "/orders/orderinsert";
@@ -54,7 +66,9 @@ public class OrdersController {
 	}
 	
 	@GetMapping("/orderupdate")
-	public String getOrderUpdate(UpdateOrderForm updateOrderForm) {
+	public String getOrderUpdate(UpdateOrderForm updateOrderForm, Model model) {
+		
+		addModelAttributes(model);
 		
 		return "/orders/orderupdate";
 	}
@@ -62,6 +76,8 @@ public class OrdersController {
 	@PostMapping("/orderupdate")
 	public String postOrderUpdate(@Valid UpdateOrderForm updateOrderForm, BindingResult bindingResult, Model model) {
 
+		addModelAttributes(model);
+		
 		if(bindingResult.hasErrors()) {
 			return "/orders/orderupdate";
 		}
@@ -111,6 +127,15 @@ public class OrdersController {
 			return "/orders/ordershow";
 		}
 	}
+	
+	private void addModelAttributes(Model model) {
+		List<Customer> customers = CustomersService.retrieveAllCustomers();
+		List<User> users = userService.retrieveAllUsers();
+		
+		model.addAttribute("customers", customers);
+		model.addAttribute("users", users);
+	}
+	
 	
 	private Order convertCreateToBO(CreateOrderForm form) {
 		Order order = new Order();

@@ -45,18 +45,22 @@
 			class="form-control" placeholder="Order ID (Required)" required>
 		<p th:if="${#fields.hasErrors('orderID')}" th:errors="*{orderID}">Order ID Error</p>
 		
-		<label for="inputcustid" class="sr-only">Customer ID</label>
-		<input type="number" th:field="*{customerID}"
-			class="form-control" placeholder="Customer ID (Required)" required>
-		<p th:if="${#fields.hasErrors('customerID')}" th:errors="*{customerID}">Customer ID Error</p>
-			
-		<label for="inputuserid" class="sr-only">User ID</label>
-		<input type="number" th:field="*{userID}" 
-			class="form-control" placeholder="User ID (Required)" required>
-		<p th:if="${#fields.hasErrors('userID')}" th:errors="*{userID}">User ID Error</p>
+		<select th:field="*{customerID}" class="form-control" required>
+			<option value="">Select a Customer (Required)</option>
+			<option th:each="customer : ${customers}" th:value="${customer.customerID}" th:text="${customer.displayNameText}">
+			</option>
+		</select>
+	    <p th:if="${#fields.hasErrors('customerID')}" th:errors="*{customerID}">Customer ID Error</p>
+	    
+		<select th:field="*{userID}" class="form-control" required>
+			<option value="">Select a User (Required)</option>
+			<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.displayNameText}">
+			</option>
+		</select>
+	    <p th:if="${#fields.hasErrors('userID')}" th:errors="*{userID}">User ID Error</p>
 			
 		<label for="inputorderpurchasedate" class="sr-only">Purchase Date</label>
-		<input type="date" th:field="*{purchaseDate}"
+		<input type="text" th:field="*{purchaseDate}"
 			class="form-control" placeholder="Purchase Date (Required)" required>
 		<p th:if="${#fields.hasErrors('purchaseDate')}" th:errors="*{purchaseDate}">Purchase Date Error</p>
 			

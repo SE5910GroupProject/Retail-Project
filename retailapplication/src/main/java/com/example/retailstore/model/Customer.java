@@ -1,5 +1,6 @@
 package com.example.retailstore.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
+	@Column(name = "customers_id")
 	private int customerID;
 	
 	@Column(name = "first_name", nullable = false, length = 30)
@@ -50,7 +51,7 @@ public class Customer {
 	private Integer version = 0;
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<Order> orders;
+	private List<Order> orders = new ArrayList<>();
 	
 	public int getCustomerID() {
 		return customerID;
@@ -137,6 +138,18 @@ public class Customer {
 	}
 
 	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+		this.orders.addAll(orders);
 	}
+	
+	
+	public String getDisplayNameText() {
+		
+		String displayName = "(" + customerID + ") " + firstName;
+		if(lastName != null) {
+			displayName += " " + lastName;
+		}
+		
+		return displayName;
+	}
+
 }

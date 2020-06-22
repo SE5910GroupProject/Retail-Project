@@ -48,8 +48,10 @@ public class CategoriesServiceImpl implements CategoriesService {
 
 	@Override
 	public void updateCategory(Category category) {
-		//ADD CONFIRMATION TO NOT ALLOW INSERTING
-		if( categoriesRepository.existsById(category.getCategoryID()) ) {
+		Optional<Category> category2 = categoriesRepository.findById(category.getCategoryID());
+		
+		if(category2.isPresent()) {
+			category.setVersion(category2.get().getVersion());
 			categoriesRepository.save(category);
 		}
 		

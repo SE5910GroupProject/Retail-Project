@@ -49,7 +49,10 @@ public class SuppliersServiceImpl implements SuppliersService {
 	@Override
 	public void updateSupplier(Supplier supplier) {
 		//ADD CONFIRMATION TO NOT ALLOW INSERTING
-		if( suppliersRepository.existsById(supplier.getSupplierID()) ) {
+		Optional<Supplier> supplier2 = suppliersRepository.findById(supplier.getSupplierID());
+		
+		if( supplier2.isPresent() ) {
+			supplier.setVersion(supplier2.get().getVersion());
 			suppliersRepository.save(supplier);
 		}
 		

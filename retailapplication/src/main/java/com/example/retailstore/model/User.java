@@ -110,4 +110,14 @@ public class User {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+	
+	public String getDisplayNameText() {
+		
+		String displayName = "(" + id + ") " + firstname;
+		if(lastname != null) {
+			displayName += " " + lastname;
+		}
+		
+		return displayName;
+	}
 }

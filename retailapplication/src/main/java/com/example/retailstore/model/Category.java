@@ -1,5 +1,6 @@
 package com.example.retailstore.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id")
+	@Column(name = "categories_id")
 	private int categoryID;
 
 	@Column(name = "category_name", nullable = false, length = 30, unique = true)
@@ -32,7 +33,7 @@ public class Category {
 	private Integer version = 0;
 
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<Product> products;
+	private List<Product> products = new ArrayList<>();
 	
 	
 	public int getCategoryID() {
@@ -72,7 +73,7 @@ public class Category {
 	}
 
 	public void setProducts(List<Product> products) {
-		this.products = products;
+		this.products.addAll(products);
 	}
 	
 }

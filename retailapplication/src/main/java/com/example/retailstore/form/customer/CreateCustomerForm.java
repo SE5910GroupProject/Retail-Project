@@ -10,18 +10,18 @@ public class CreateCustomerForm {
 	@Size(min=1, max=30, message = "First Name must be between 1 and 30 characters long.")
 	private String firstName;
 	
-	@Size(min=1, max=30, message = "Last Name must be between 1 and 30 characters long.")
+	@Size(max=30, message = "Last Name must be between 1 and 30 characters long.")
 	private String lastName;
 	
 	private String address;
 	
-	@Size(min=1, max=20, message = "City must be between 1 and 20 characters long.")
+	@Size(max=20, message = "City must be between 1 and 20 characters long.")
 	private String city;
 	
 	@Positive(message = "Zip Code must be positive.")
 	private Integer zipCode;
 	
-	@Size(min=1, max=32, message = "Country must be between 1 and 32 characters long.")
+	@Size(max=32, message = "Country must be between 1 and 32 characters long.")
 	private String country;
 	
 	@Positive(message = "Phone Number must be positive.")

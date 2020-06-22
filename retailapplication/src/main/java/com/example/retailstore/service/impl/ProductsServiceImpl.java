@@ -50,7 +50,10 @@ public class ProductsServiceImpl implements ProductsService {
 	@Override
 	public void updateProduct(Product product) {
 		//ADD CONFIRMATION TO NOT ALLOW INSERTING
-		if( productsRepository.existsById(product.getProductID()) ) {
+		Optional<Product> product2 = productsRepository.findById(product.getProductID());
+		
+		if( product2.isPresent() ) {
+			product.setVersion(product2.get().getVersion());
 			productsRepository.save(product);
 		}
 		

@@ -18,7 +18,7 @@ public class UpdateSupplierForm {
 	@Size(min=1, max=30, message = "Contact Name must be between 1 and 30 characters long.")
 	private String contactName;
 	
-	@Size(min=1, max=30, message = "Contact Designation must be between 1 and 30 characters long.")
+	@Size(max=30, message = "Contact Designation must be between 1 and 30 characters long.")
 	private String contactDesignation;
 	
 	@NotNull(message = "Phone Number must not be null.")
@@ -27,13 +27,13 @@ public class UpdateSupplierForm {
 	
 	private String address;
 	
-	@Size(min=1, max=20, message = "City must be between 1 and 20 characters long.")
+	@Size(max=20, message = "City must be between 1 and 20 characters long.")
 	private String city;
 	
 	@Positive(message = "Zip Code must be a positive integer.")
 	private Integer zipCode;
 	
-	@Size(min=1, max=15, message = "Country must be between 1 and 15 characters long.")
+	@Size(max=15, message = "Country must be between 1 and 15 characters long.")
 	private String country;
 	
 	public Integer getSupplierID() {

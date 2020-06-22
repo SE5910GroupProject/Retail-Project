@@ -18,7 +18,9 @@ import com.example.retailstore.form.product.UpdateProductForm;
 import com.example.retailstore.model.Category;
 import com.example.retailstore.model.Product;
 import com.example.retailstore.model.Supplier;
+import com.example.retailstore.service.CategoriesService;
 import com.example.retailstore.service.ProductsService;
+import com.example.retailstore.service.SuppliersService;
 
 @Controller
 @RequestMapping("/product")
@@ -27,19 +29,29 @@ public class ProductController {
 	@Autowired
 	ProductsService productService;
 	
+	@Autowired
+	CategoriesService categoriesService;
+	
+	@Autowired
+	SuppliersService suppliersService;
+	
 	@GetMapping("/productindex")
 	public String getProduct() {
 		return "/product/productindex";
 	}
 
 	@GetMapping("/productinsert")
-	public String getProductInsert(CreateProductForm createProductForm) {
+	public String getProductInsert(CreateProductForm createProductForm, Model model) {
+		
+		addModelAttribute(model);
 		
 		return "/product/productinsert";
 	}
 	
 	@PostMapping("/productinsert")
 	public String postProductInsert(@Valid CreateProductForm createProductForm, BindingResult bindingResult, Model model) {
+		
+		addModelAttribute(model);
 		
 		if(bindingResult.hasErrors()) {
 			return "/product/productinsert";
@@ -54,7 +66,9 @@ public class ProductController {
 	}
 	
 	@GetMapping("/productupdate")
-	public String getProductUpdate(UpdateProductForm updateProductForm) {
+	public String getProductUpdate(UpdateProductForm updateProductForm, Model model) {
+		
+		addModelAttribute(model);
 		
 		return "/product/productupdate";
 	}
@@ -62,7 +76,10 @@ public class ProductController {
 	@PostMapping("/productupdate")
 	public String postProductUpdate(@Valid UpdateProductForm updateProductForm, BindingResult bindingResult, Model model) {
 
+		addModelAttribute(model);
+		
 		if(bindingResult.hasErrors()) {
+			
 			return "/product/productupdate";
 		}
 		else {
@@ -110,6 +127,14 @@ public class ProductController {
 			
 			return "/product/productshow";
 		}
+	}
+	
+	private void addModelAttribute(Model model) {
+		List<Category> categories = categoriesService.retrieveAllCategories();
+		List<Supplier> suppliers = suppliersService.retrieveAllSuppliers();
+		
+		model.addAttribute("categories", categories);
+		model.addAttribute("suppliers", suppliers);
 	}
 	
 	private Product convertCreateToBO(CreateProductForm form) {

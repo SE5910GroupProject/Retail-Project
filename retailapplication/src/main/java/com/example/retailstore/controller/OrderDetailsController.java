@@ -19,6 +19,8 @@ import com.example.retailstore.model.Order;
 import com.example.retailstore.model.OrderDetails;
 import com.example.retailstore.model.Product;
 import com.example.retailstore.service.OrderDetailsService;
+import com.example.retailstore.service.OrdersService;
+import com.example.retailstore.service.ProductsService;
 
 @Controller
 @RequestMapping("/orderdetails")
@@ -27,19 +29,29 @@ public class OrderDetailsController {
 	@Autowired
 	OrderDetailsService orderDetailService;
 	
+	@Autowired
+	ProductsService productsService;
+	
+	@Autowired
+	OrdersService ordersService;
+	
 	@GetMapping("/orderdetailindex")
 	public String getOrderDetail() {
 		return "/orderdetails/orderdetailindex";
 	}
 
 	@GetMapping("/orderdetailinsert")
-	public String getOrderDetailInsert(CreateOrderDetailsForm createOrderDetailForm) {
+	public String getOrderDetailInsert(CreateOrderDetailsForm createOrderDetailForm, Model model) {
+		
+		addModelAttributes(model);
 		
 		return "/orderdetails/orderdetailinsert";
 	}
 	
 	@PostMapping("/orderdetailinsert")
 	public String postOrderDetailInsert(@Valid CreateOrderDetailsForm createOrderDetailForm, BindingResult bindingResult, Model model) {
+		
+		addModelAttributes(model);
 		
 		if(bindingResult.hasErrors()) {
 			return "/orderdetails/orderdetailinsert";
@@ -54,7 +66,9 @@ public class OrderDetailsController {
 	}
 	
 	@GetMapping("/orderdetailupdate")
-	public String getOrderDetailUpdate(UpdateOrderDetailsForm updateOrderDetailForm) {
+	public String getOrderDetailUpdate(UpdateOrderDetailsForm updateOrderDetailForm, Model model) {
+		
+		addModelAttributes(model);
 		
 		return "/orderdetails/orderdetailupdate";
 	}
@@ -62,6 +76,8 @@ public class OrderDetailsController {
 	@PostMapping("/orderdetailupdate")
 	public String postOrderDetailUpdate(@Valid UpdateOrderDetailsForm updateOrderDetailForm, BindingResult bindingResult, Model model) {
 
+		addModelAttributes(model);
+		
 		if(bindingResult.hasErrors()) {
 			return "/orderdetails/orderdetailupdate";
 		}
@@ -112,6 +128,14 @@ public class OrderDetailsController {
 		}
 	}
 	
+	private void addModelAttributes(Model model) {
+		List<Product> products = productsService.retrieveAllProducts();
+		List<Order> orders = ordersService.retrieveAllOrders();
+		
+		model.addAttribute("products", products);
+		model.addAttribute("orders", orders);
+	}
+	
 	private OrderDetails convertCreateToBO(CreateOrderDetailsForm form) {
 		OrderDetails orderDetail = new OrderDetails();
 		
@@ -123,6 +147,7 @@ public class OrderDetailsController {
 		orderDetail.setOrder(order);
 		orderDetail.setProduct(product);
 		
+		orderDetail.setQuantity(form.getQuantity());
 		orderDetail.setUnitPrice(form.getUnitPrice());
 		orderDetail.setDiscount(form.getDiscount());
 		return orderDetail;
@@ -140,6 +165,7 @@ public class OrderDetailsController {
 		orderDetail.setOrder(order);
 		orderDetail.setProduct(product);
 		
+		orderDetail.setQuantity(form.getQuantity());
 		orderDetail.setUnitPrice(form.getUnitPrice());
 		orderDetail.setDiscount(form.getDiscount());
 		return orderDetail;

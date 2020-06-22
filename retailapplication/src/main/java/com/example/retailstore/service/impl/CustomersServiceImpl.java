@@ -49,7 +49,10 @@ public class CustomersServiceImpl implements CustomersService {
 	@Override
 	public void updateCustomer(Customer customer) {
 		//ADD CONFIRMATION TO NOT ALLOW INSERTING
-		if( customersRepository.existsById(customer.getCustomerID()) ) {
+		Optional<Customer> customer2 = customersRepository.findById(customer.getCustomerID());
+		
+		if( customer2.isPresent() ) {
+			customer.setVersion(customer2.get().getVersion());
 			customersRepository.save(customer);
 		}
 		

@@ -49,7 +49,10 @@ public class OrdersServiceImpl implements OrdersService {
 	@Override
 	public void updateOrder(Order order) {
 		//ADD CONFIRMATION TO NOT ALLOW INSERTING
-		if( ordersRepository.existsById(order.getOrderID()) ) {
+		Optional<Order> order2 = ordersRepository.findById(order.getOrderID());
+		
+		if( order2.isPresent() ) {
+			order.setVersion(order2.get().getVersion());
 			ordersRepository.save(order);
 		}
 		
