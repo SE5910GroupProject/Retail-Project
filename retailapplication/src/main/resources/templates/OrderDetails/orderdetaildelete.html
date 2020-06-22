@@ -15,10 +15,12 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <link rel="stylesheet" th:href="@{css/tabstyle.css}">
 <meta charset="ISO-8859-1">
-<title>Delete Supplier</title>
+<title>Delete Order Details</title>
 </head>
 <body class="d-flex flex-column h-100">
-	<form class="form-horizontal" action="#" th:action="@{/suppliers/supplierdelete}" th:object="${deleteSupplierForm}" method="POST">
+
+	<form class="form-horizontal" action="#" th:action="@{/orderdetails/orderdetaildelete}" th:object="${deleteOrderDetailsForm}" method="POST">
+
 		<div th:replace="~{fragments/navigation :: navigation}"></div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -28,8 +30,8 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"></script>
 			
-		<h5 class="h3 mb-3 fontweight-normal">Provide Details for Supplier you want to Delete</h5>
-	
+		<h5 class="h3 mb-3 fontweight-normal">Provide Details for the Order Detail you want to Delete</h5>
+		
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
@@ -37,14 +39,15 @@
 				</div>
 			</div>
 		</div>
+		
+		<label for="inputorderdetailid" class="sr-only">Order Detail ID</label>
+		<input type="number" th:field="*{orderDetailsID}"
+				class="form-control" placeholder="Order Detail ID" required>
 			
-		<label for="inputsupplierid" class="sr-only">Supplier ID</label>
-		<input type="number" th:field="*{supplierID}" 
-				class="form-control" placeholder="Supplier ID" required>
-				
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
 		
 		<div th:replace="~{fragments/footer :: footer}"></div>
+		
 	</form>
 </body>
 </html>
