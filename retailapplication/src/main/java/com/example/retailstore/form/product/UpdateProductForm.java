@@ -24,7 +24,7 @@ public class UpdateProductForm {
 	private BigDecimal unitPrice;
 	
 	@NotNull(message = "Quantity per Unit must not be null.")
-	private Integer quantityPerUnit;
+	private String quantityPerUnit;
 	
 	@NotNull(message = "Units in Stock must not be null.")
 	private Integer unitsInStock;
@@ -72,11 +72,11 @@ public class UpdateProductForm {
 		this.unitPrice = unitPrice;
 	}
 	
-	public Integer getQuantityPerUnit() {
+	public String getQuantityPerUnit() {
 		return quantityPerUnit;
 	}
 	
-	public void setQuantityPerUnit(Integer quantityPerUnit) {
+	public void setQuantityPerUnit(String quantityPerUnit) {
 		this.quantityPerUnit = quantityPerUnit;
 	}
 	

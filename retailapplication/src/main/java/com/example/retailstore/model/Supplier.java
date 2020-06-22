@@ -27,7 +27,7 @@ public class Supplier {
 	private String contactDesignation;
 
 	@Column(name = "phone_number", nullable = false)
-	private Integer phoneNumber;
+	private Long phoneNumber;
 
 	@Column(name = "address")
 	private String address;
@@ -77,11 +77,11 @@ public class Supplier {
 		this.contactDesignation = contactDesignation;
 	}
 
-	public Integer getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

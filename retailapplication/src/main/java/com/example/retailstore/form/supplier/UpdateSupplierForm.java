@@ -6,7 +6,7 @@ public class UpdateSupplierForm {
 	private String companyName;
 	private String contactName;
 	private String contactDesignation;
-	private Integer phoneNumber;
+	private Long phoneNumber;
 	private String address;
 	private String city;
 	private Integer zipCode;
@@ -44,11 +44,11 @@ public class UpdateSupplierForm {
 		this.contactDesignation = contactDesignation;
 	}
 	
-	public Integer getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	

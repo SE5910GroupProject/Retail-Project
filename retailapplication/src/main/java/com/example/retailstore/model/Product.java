@@ -32,7 +32,7 @@ public class Product {
 	private BigDecimal unitPrice;
 
 	@Column(name = "quantity_per_unit", nullable = false)
-	private Integer quantityPerUnit;
+	private String quantityPerUnit;
 
 	@Column(name = "units_in_stock", nullable = false)
 	private Integer unitsInStock;
@@ -72,11 +72,11 @@ public class Product {
 		this.unitPrice = unitPrice;
 	}
 
-	public Integer getQuantityPerUnit() {
+	public String getQuantityPerUnit() {
 		return quantityPerUnit;
 	}
 
-	public void setQuantityPerUnit(Integer quantityPerUnit) {
+	public void setQuantityPerUnit(String quantityPerUnit) {
 		this.quantityPerUnit = quantityPerUnit;
 	}
 

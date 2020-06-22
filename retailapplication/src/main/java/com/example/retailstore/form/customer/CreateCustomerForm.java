@@ -6,9 +6,9 @@ public class CreateCustomerForm {
 	private String lastName;
 	private String address;
 	private String city;
-	private int zipCode;
+	private Integer zipCode;
 	private String country;
-	private int phoneNumber;
+	private Long phoneNumber;
 	private String birthDate;
 	
 	public String getFirstName() {
@@ -59,11 +59,11 @@ public class CreateCustomerForm {
 		this.country = country;
 	}
 	
-	public int getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	

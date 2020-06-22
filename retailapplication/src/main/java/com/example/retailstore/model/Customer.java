@@ -36,7 +36,7 @@ public class Customer {
 	private String country;
 	
 	@Column(name = "phone_number")
-	private Integer phoneNumber;
+	private Long phoneNumber;
 	
 	@Column(name = "birth_day")
 	private String birthDate;
@@ -101,11 +101,11 @@ public class Customer {
 		this.country = country;
 	}
 	
-	public Integer getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
