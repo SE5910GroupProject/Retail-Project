@@ -30,6 +30,12 @@ public class ProductsServiceImpl implements ProductsService {
 	}
 	
 	@Override
+	public List<Product> retrieveProductsBetweenIdRange(int startIndex, int endIndex) {
+		return productsRepository.findProductsBetweenIdRange(startIndex, endIndex);
+	}
+	
+	
+	@Override
 	public Product retrieveProductByID(int id) {
 		Optional<Product> product = productsRepository.findById(id);
 		

@@ -30,6 +30,11 @@ public class SuppliersServiceImpl implements SuppliersService {
 	}
 	
 	@Override
+	public List<Supplier> retrieveSuppliersBetweenIdRange(int startIndex, int endIndex) {
+		return suppliersRepository.findSuppliersBetweenIdRange(startIndex, endIndex);
+	}
+	
+	@Override
 	public Supplier retrieveSupplierByID(int id) {
 		Optional<Supplier> supplier = suppliersRepository.findById(id);
 		

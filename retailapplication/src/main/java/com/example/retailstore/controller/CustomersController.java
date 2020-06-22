@@ -97,12 +97,12 @@ public class CustomersController {
 	}
 	
 	@PostMapping("/customershow")
-	public String postCustomerShow(@Valid DeleteCustomerForm showCustomerForm, BindingResult bindingResult, Model model) {
+	public String postCustomerShow(@Valid ShowCustomerForm showCustomerForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "/customer/customershow";
 		}
 		else {
-			List<Customer> customers = customerService.retrieveAllCustomers();
+			List<Customer> customers = customerService.retrieveCustomersBetweenIdRange(showCustomerForm.getFrom(), showCustomerForm.getTo());
 			model.addAttribute("customers", customers);
 			model.addAttribute("showCustomerForm", new ShowCustomerForm());
 			

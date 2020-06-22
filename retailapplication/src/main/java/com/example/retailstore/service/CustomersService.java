@@ -10,6 +10,8 @@ public interface CustomersService {
 	
 	List<Customer> retrieveAllCustomers();
 	
+	List<Customer> retrieveCustomersBetweenIdRange(int startIndex, int endIndex);
+	
 	Customer retrieveCustomerByID(int id);
 	
 	void updateCustomer(Customer customer);

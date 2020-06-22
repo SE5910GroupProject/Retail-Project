@@ -30,6 +30,11 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 	
 	@Override
+	public List<Order> retrieveOrdersBetweenIdRange(int startIndex, int endIndex) {
+		return ordersRepository.findOrdersBetweenIdRange(startIndex, endIndex);
+	}
+	
+	@Override
 	public Order retrieveOrderByID(int id) {
 		Optional<Order> order = ordersRepository.findById(id);
 		

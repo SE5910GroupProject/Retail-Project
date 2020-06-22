@@ -97,12 +97,12 @@ public class OrdersController {
 	}
 	
 	@PostMapping("/ordershow")
-	public String postOrderShow(@Valid DeleteOrderForm showOrderForm, BindingResult bindingResult, Model model) {
+	public String postOrderShow(@Valid ShowOrderForm showOrderForm, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "/orders/ordershow";
 		}
 		else {
-			List<Order> orders = orderService.retrieveAllOrders();
+			List<Order> orders = orderService.retrieveOrdersBetweenIdRange(showOrderForm.getFrom(), showOrderForm.getTo());
 			model.addAttribute("orders", orders);
 			model.addAttribute("showOrderForm", new ShowOrderForm());
 			

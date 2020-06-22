@@ -29,6 +29,10 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 		return orderDetailsRepository.findAll();
 	}
 	
+	public List<OrderDetails> retrieveOrderDetailsBetweenIdRange(int startIndex, int endIndex) {
+		return orderDetailsRepository.findOrderDetailsBetweenIdRange(startIndex, endIndex);
+	}
+	
 	@Override
 	public OrderDetails retrieveOrderDetailsByID(int id) {
 		Optional<OrderDetails> orderDetails = orderDetailsRepository.findById(id);

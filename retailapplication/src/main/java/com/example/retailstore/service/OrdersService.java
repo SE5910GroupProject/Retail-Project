@@ -10,6 +10,8 @@ public interface OrdersService {
 
 	List<Order> retrieveAllOrders();
 
+	List<Order> retrieveOrdersBetweenIdRange(int startIndex, int endIndex);
+	
 	Order retrieveOrderByID(int id);
 
 	void updateOrder(Order order);

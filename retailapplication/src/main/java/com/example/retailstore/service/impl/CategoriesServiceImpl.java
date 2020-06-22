@@ -30,6 +30,11 @@ public class CategoriesServiceImpl implements CategoriesService {
 	}
 	
 	@Override
+	public List<Category> retrieveCategoriesBetweenIdRange(int startIndex, int endIndex) {
+		return categoriesRepository.findCategoriesBetweenIdRange(startIndex, endIndex);
+	}
+	
+	@Override
 	public Category retrieveCategoryByID(int id) {
 		Optional<Category> category = categoriesRepository.findById(id);
 		

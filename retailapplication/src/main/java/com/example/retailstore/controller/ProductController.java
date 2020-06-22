@@ -102,7 +102,7 @@ public class ProductController {
 			return "/product/productshow";
 		}
 		else {
-			List<Product> products = productService.retrieveAllProducts();
+			List<Product> products = productService.retrieveProductsBetweenIdRange(showProductForm.getFrom(), showProductForm.getTo());
 			model.addAttribute("products", products);
 			model.addAttribute("showProductForm", new ShowProductForm());
 			

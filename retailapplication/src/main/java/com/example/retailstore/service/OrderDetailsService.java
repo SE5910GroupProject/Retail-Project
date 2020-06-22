@@ -10,6 +10,8 @@ public interface OrderDetailsService {
 	
 	List<OrderDetails> retrieveAllOrderDetails();
 	
+	List<OrderDetails> retrieveOrderDetailsBetweenIdRange(int startIndex, int endIndex);
+	
 	OrderDetails retrieveOrderDetailsByID(int id);
 	
 	void updateOrderDetails(OrderDetails orderDetails);

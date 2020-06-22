@@ -102,7 +102,7 @@ public class SupplierController {
 			return "/suppliers/suppliershow";
 		}
 		else {
-			List<Supplier> suppliers = supplierService.retrieveAllSuppliers();
+			List<Supplier> suppliers = supplierService.retrieveSuppliersBetweenIdRange(showSupplierForm.getFrom(), showSupplierForm.getTo());
 			model.addAttribute("suppliers", suppliers);
 			model.addAttribute("showSupplierForm", new ShowSupplierForm());
 			

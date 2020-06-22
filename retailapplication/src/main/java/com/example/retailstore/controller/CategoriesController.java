@@ -61,7 +61,7 @@ public class CategoriesController {
 			return "/categories/categoryshow";
 		}
 		else {
-			List<Category> categories = categoriesService.retrieveAllCategories();
+			List<Category> categories = categoriesService.retrieveCategoriesBetweenIdRange(showCategoryForm.getFrom(), showCategoryForm.getTo());
 			model.addAttribute("categories", categories);
 			model.addAttribute("showCategoryForm", new ShowCategoryForm());
 			

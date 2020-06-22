@@ -10,6 +10,8 @@ public interface SuppliersService {
 	
 	List<Supplier> retrieveAllSuppliers();
 	
+	List<Supplier> retrieveSuppliersBetweenIdRange(int startIndex, int endIndex);
+	
 	Supplier retrieveSupplierByID(int id);
 	
 	void updateSupplier(Supplier supplier);

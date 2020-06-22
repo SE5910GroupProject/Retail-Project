@@ -10,6 +10,8 @@ public interface ProductsService {
 	
 	List<Product> retrieveAllProducts();
 	
+	List<Product> retrieveProductsBetweenIdRange(int startIndex, int endIndex);
+	
 	Product retrieveProductByID(int id);
 	
 	void updateProduct(Product product);

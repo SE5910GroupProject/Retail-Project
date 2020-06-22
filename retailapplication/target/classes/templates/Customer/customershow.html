@@ -32,13 +32,13 @@
 			
 		<h5 class="h3 mb-3 fontweight-normal">Provide Details for the Range of ids you want to look At!!!</h5>
 		
-		<label for="inputcustidfrom" class="sr-only">CustomerID-From</label>
-		<input type="custidfrom" id="custidfrom" name="custidfrom"
-			class="form-control" placeholder="CustomerID-From" required>
-		
-		<label for="inputcustidto" class="sr-only">CustomerID-To</label>
-		<input type="custidto" id="custidto" name="custidto" class="form-control"
-			placeholder="CustomerID-To" required>
+		<label for="inputcatidfrom" class="sr-only">CategoryID-From</label>
+		<input type="number" th:field="*{from}" 
+			class="form-control" placeholder="CategoryID-From" required>
+			
+		<label for="inputcatidto" class="sr-only">CategoryID-To</label>
+		<input type="number" th:field="*{to}"  
+			class="form-control" placeholder="CategoryID-To" required>
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Show</button>
 

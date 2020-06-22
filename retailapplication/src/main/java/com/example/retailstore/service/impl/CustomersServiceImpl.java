@@ -30,6 +30,11 @@ public class CustomersServiceImpl implements CustomersService {
 	}
 	
 	@Override
+	public List<Customer> retrieveCustomersBetweenIdRange(int startIndex, int endIndex) {
+		return customersRepository.findCustomersBetweenIdRange(startIndex, endIndex);
+	}
+	
+	@Override
 	public Customer retrieveCustomerByID(int id) {
 		Optional<Customer> customer = customersRepository.findById(id);
 		
