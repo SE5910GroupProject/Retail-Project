@@ -26,11 +26,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Override
-	public User findUserByEmail(String email) {
-		return userRepository.findByEmail(email);
-	}
-
+	/**
+	 * Attempts to create a new row in the Users table.
+	 * First checks if the object already exists. If so, do nothing, otherwise perform the insert.
+	 *
+	 * @param user the object to be inserted into the database
+	 */
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -40,6 +41,22 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);
 	}
 
+	/**
+	 * Retrieves a specific row from the Categories table by the email provided.
+	 *
+	 * @param email The email of the row being searched for.
+	 * @return User if found, null if not found
+	 */
+	@Override
+	public User findUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
+	/**
+	 * Retrieves all rows from the Users table.
+	 * 
+	 * @return List
+	 */
 	@Override
 	public List<User> retrieveAllUsers() {
 		return userRepository.findAll();

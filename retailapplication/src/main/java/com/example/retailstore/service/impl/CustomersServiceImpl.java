@@ -16,6 +16,12 @@ public class CustomersServiceImpl implements CustomersService {
 	@Autowired
 	CustomersRepository customersRepository;
 	
+	/**
+	 * Attempts to create a new row in the Customer table.
+	 * First checks if the object already exists. If so, do nothing, otherwise perform the insert.
+	 *
+	 * @param customer the object to be inserted into the database
+	 */
 	@Override
 	public void insertCustomer(Customer customer) {
 		//Can return, maybe do something with it?
@@ -24,16 +30,35 @@ public class CustomersServiceImpl implements CustomersService {
 		}
 	}
 
+	/**
+	* Retrieves all rows from the Customers table.
+	* 
+	* @return List
+	*/
 	@Override
 	public List<Customer> retrieveAllCustomers() { 
 		return customersRepository.findAll();
 	}
 	
+	/**
+	* Retrieves all rows from the Customers table contained between the provided indexes.
+	*
+	* @param startIndex The starting index (inclusive) to be retrieved
+	* @param endIndex   The ending index (inclusive) to be retrieved
+	* @return List
+	*/
 	@Override
 	public List<Customer> retrieveCustomersBetweenIdRange(int startIndex, int endIndex) {
 		return customersRepository.findCustomersBetweenIdRange(startIndex, endIndex);
 	}
 	
+	
+	/**
+	* Retrieves a specific row from the Customers table by the ID provided
+	*
+	* @param id The primary key of the row being searched for. 
+	* @return Customer if found, null if not found
+	*/
 	@Override
 	public Customer retrieveCustomerByID(int id) {
 		Optional<Customer> customer = customersRepository.findById(id);
@@ -46,9 +71,14 @@ public class CustomersServiceImpl implements CustomersService {
 		}
 	}
 
+	/**
+	* Updates a specific row in the Customers table.
+	* If present, changes the version number and updates, otherwise, it does not update.
+	*
+	* @param customer The object being updated
+	*/
 	@Override
 	public void updateCustomer(Customer customer) {
-		//ADD CONFIRMATION TO NOT ALLOW INSERTING
 		Optional<Customer> customer2 = customersRepository.findById(customer.getCustomerID());
 		
 		if( customer2.isPresent() ) {
@@ -58,6 +88,12 @@ public class CustomersServiceImpl implements CustomersService {
 		
 	}
 
+	/**
+	* Performs a hard-delete on a row in the Customer table by a specific ID.
+	* Checks if a row corresponds with the given ID first. If so, continue, otherwise do nothing.
+	* 
+	* @param id The id of the Category being deleted
+	*/
 	@Override
 	public void deleteCustomer(int id) {
 		if(customersRepository.existsById(id)) {
