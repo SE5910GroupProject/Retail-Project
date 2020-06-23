@@ -8,8 +8,9 @@
  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 </head>
-<body>
- <div class="container">
+<body style="background-color:#13252d;" >
+ <div class="container" style="margin-left: 2em;margin-right: 1em;margin-top: 1em;padding-left: 6em;border-width: 2px; border-color: black; border-style:solid;background-color:white;font-family: Times New Roman, Times, serif;font-size: 40px;">RETAIL MANAGEMENT SYSTEM</div>
+ <div class="container"  style="margin-left: 5em;margin-right: 1em;margin-top: 6em;padding: 2em 2em 2em 2em;border-width: 2px; border-color: black; border-style:solid;background-color:white;">
      <form class="form-horizontal" role="form" method="POST" th:action="@{/signup}" th:object="${user}">
       <div class="row">
              <div class="col-md-3"></div>
@@ -97,6 +98,7 @@
              <div class="col-md-3"></div>
              <div class="col-md-6">
                  <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+                 <a th:href="@{/login}">Click Here to Login</a>
              </div>
          </div>
      </form>

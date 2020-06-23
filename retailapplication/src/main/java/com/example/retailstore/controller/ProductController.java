@@ -125,6 +125,10 @@ public class ProductController {
 			model.addAttribute("products", products);
 			model.addAttribute("showProductForm", new ShowProductForm());
 			
+			if(products == null || products.isEmpty()) {
+				model.addAttribute("noRowsFound", "No Products found between provided indexes.");
+			}
+			
 			return "/product/productshow";
 		}
 	}

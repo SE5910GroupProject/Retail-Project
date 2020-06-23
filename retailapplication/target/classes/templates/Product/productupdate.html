@@ -96,8 +96,9 @@
 		 <p th:if="${#fields.hasErrors('productStatus')}" th:errors="*{productStatus}">Product Status Error</p>
 	     
 		 <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
-	     
-		 <div th:replace="~{fragments/footer :: footer}"></div>
 	</form>
 </body>
+
+ <div th:replace="~{fragments/footer :: footer}"></div>
+
 </html>

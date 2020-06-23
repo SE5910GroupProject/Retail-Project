@@ -106,6 +106,10 @@ public class SupplierController {
 			model.addAttribute("suppliers", suppliers);
 			model.addAttribute("showSupplierForm", new ShowSupplierForm());
 			
+			if(suppliers == null || suppliers.isEmpty()) {
+				model.addAttribute("noRowsFound", "No Suppliers found between provided indexes.");
+			}
+			
 			return "/suppliers/suppliershow";
 		}
 	}

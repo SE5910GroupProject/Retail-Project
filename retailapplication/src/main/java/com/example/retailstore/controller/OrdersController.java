@@ -124,6 +124,10 @@ public class OrdersController {
 			model.addAttribute("orders", orders);
 			model.addAttribute("showOrderForm", new ShowOrderForm());
 			
+			if(orders == null || orders.isEmpty()) {
+				model.addAttribute("noRowsFound", "No Orders found between provided indexes.");
+			}
+			
 			return "/orders/ordershow";
 		}
 	}

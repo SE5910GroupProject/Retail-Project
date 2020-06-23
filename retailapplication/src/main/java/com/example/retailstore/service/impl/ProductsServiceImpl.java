@@ -24,7 +24,6 @@ public class ProductsServiceImpl implements ProductsService {
 	 */
 	@Override
 	public void insertProduct(Product product) {
-		//Can return, maybe do something with it?
 		if( !productsRepository.existsById(product.getProductID()) ) {
 			productsRepository.save(product);
 		}
@@ -49,6 +48,13 @@ public class ProductsServiceImpl implements ProductsService {
 	 */
 	@Override
 	public List<Product> retrieveProductsBetweenIdRange(int startIndex, int endIndex) {
+		//In the future, this should throw an exception, but for the time being, this is fine as is.
+		if(endIndex < startIndex) {
+			int temp = startIndex;
+			startIndex = endIndex;
+			startIndex = temp;
+		}
+		
 		return productsRepository.findProductsBetweenIdRange(startIndex, endIndex);
 	}
 	

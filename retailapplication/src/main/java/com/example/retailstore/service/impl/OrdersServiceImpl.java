@@ -48,6 +48,13 @@ public class OrdersServiceImpl implements OrdersService {
 	 */
 	@Override
 	public List<Order> retrieveOrdersBetweenIdRange(int startIndex, int endIndex) {
+		//In the future, this should throw an exception, but for the time being, this is fine as is.
+		if(endIndex < startIndex) {
+			int temp = startIndex;
+			startIndex = endIndex;
+			startIndex = temp;
+		}
+		
 		return ordersRepository.findOrdersBetweenIdRange(startIndex, endIndex);
 	}
 	

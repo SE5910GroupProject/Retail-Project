@@ -65,6 +65,10 @@ public class CategoriesController {
 			model.addAttribute("categories", categories);
 			model.addAttribute("showCategoryForm", new ShowCategoryForm());
 			
+			if(categories == null || categories.isEmpty()) {
+				model.addAttribute("noRowsFound", "No Categories found between provided indexes.");
+			}
+			
 			return "categories/categoryshow";
 		}
 	}

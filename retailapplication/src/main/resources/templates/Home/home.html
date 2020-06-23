@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="h-100">
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
-  <link rel="stylesheet" th:href="@{css/tabstyle.css}">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+	<link rel="stylesheet" th:href="@{css/tabstyle.css}">
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
 </head>
-<body class="d-flex flex-column h-100">
-<div th:replace="~{fragments/navigation :: navigation}"></div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<h2>HOME</h2>
-<div th:replace="~{fragments/footer :: footer}"></div>
+<body id = "home" class="d-flex flex-column h-100" >
+	<div th:replace="~{fragments/navigation :: navigation}"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<div ><h3 class="h3 mb-3 font-weight-normal" style="margin-left: 1em;margin-right: 1em;margin-top: 2.5em;padding: 2em 2em 2em 2em;border-width: 2px; border-color: black; border-style:solid;background-color:#52dff8;font-family: Times New Roman, Times, serif;">The retail industry is considered one of the most important sectors of the economy as it directly deals with the consumers. It includes all stores from small groceries to supermarket chains and shopping malls that sell products and services to end consumer for personal and household use. The aim of this project is design a retail management system for stock managers.It is a set of tools that aids stockmanagers to properly manage the store and aims for making the job of maintaining the store easier for them.By maintaining a proper retail management system, informed decisions can be taken and therefore the overall efficiency can be enhanced.</h3></div>
+	<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

@@ -48,6 +48,14 @@ public class CategoriesServiceImpl implements CategoriesService {
 	 */
 	@Override
 	public List<Category> retrieveCategoriesBetweenIdRange(int startIndex, int endIndex) {
+		
+		//In the future, this should throw an exception, but for the time being, this is fine as is.
+		if(endIndex < startIndex) {
+			int temp = startIndex;
+			startIndex = endIndex;
+			startIndex = temp;
+		}
+		
 		return categoriesRepository.findCategoriesBetweenIdRange(startIndex, endIndex);
 	}
 	

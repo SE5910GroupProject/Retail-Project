@@ -24,7 +24,6 @@ public class CustomersServiceImpl implements CustomersService {
 	 */
 	@Override
 	public void insertCustomer(Customer customer) {
-		//Can return, maybe do something with it?
 		if( !customersRepository.existsById(customer.getCustomerID()) ) {
 			customersRepository.save(customer);
 		}
@@ -49,6 +48,13 @@ public class CustomersServiceImpl implements CustomersService {
 	*/
 	@Override
 	public List<Customer> retrieveCustomersBetweenIdRange(int startIndex, int endIndex) {
+		//In the future, this should throw an exception, but for the time being, this is fine as is.
+		if(endIndex < startIndex) {
+			int temp = startIndex;
+			startIndex = endIndex;
+			startIndex = temp;
+		}
+		
 		return customersRepository.findCustomersBetweenIdRange(startIndex, endIndex);
 	}
 	

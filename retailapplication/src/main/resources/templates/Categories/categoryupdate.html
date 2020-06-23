@@ -17,8 +17,9 @@
 <meta charset="ISO-8859-1">
 <title>Update Category</title>
 </head>
+<body class="d-flex flex-column h-100">
+
 	<form class="form-horizontal" action="#" th:action="@{/categories/categoryupdate}" th:object="${updateCategoryForm}" method="POST">
-		<body class="d-flex flex-column h-100">
 			<div th:replace="~{fragments/navigation :: navigation}"></div>
 			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 				integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -56,6 +57,6 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
 			
 			<div th:replace="~{fragments/footer :: footer}"></div>
-		</body>
-	</form>
+		</form>
+	</body>
 </html>

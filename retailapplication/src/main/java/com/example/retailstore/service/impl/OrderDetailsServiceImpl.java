@@ -24,7 +24,6 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 	 */
 	@Override
 	public void insertOrderDetails(OrderDetails orderDetails) {
-		//Can return, maybe do something with it?
 		if( !orderDetailsRepository.existsById(orderDetails.getOrderDetailsID()) ) {
 			orderDetailsRepository.save(orderDetails);
 		}
@@ -48,6 +47,13 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 	* @return Collection
 	*/
 	public List<OrderDetails> retrieveOrderDetailsBetweenIdRange(int startIndex, int endIndex) {
+		//In the future, this should throw an exception, but for the time being, this is fine as is.
+		if(endIndex < startIndex) {
+			int temp = startIndex;
+			startIndex = endIndex;
+			startIndex = temp;
+		}
+		
 		return orderDetailsRepository.findOrderDetailsBetweenIdRange(startIndex, endIndex);
 	}
 	
@@ -77,7 +83,6 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
 	*/
 	@Override
 	public void updateOrderDetails(OrderDetails orderDetails) {
-		//ADD CONFIRMATION TO NOT ALLOW INSERTING
 		Optional<OrderDetails> orderDetails2 = orderDetailsRepository.findById(orderDetails.getOrderDetailsID());
 		
 		if(orderDetails2.isPresent()) {

@@ -49,6 +49,13 @@ public class SuppliersServiceImpl implements SuppliersService {
 	 */
 	@Override
 	public List<Supplier> retrieveSuppliersBetweenIdRange(int startIndex, int endIndex) {
+		//In the future, this should throw an exception, but for the time being, this is fine as is.
+		if(endIndex < startIndex) {
+			int temp = startIndex;
+			startIndex = endIndex;
+			startIndex = temp;
+		}
+		
 		return suppliersRepository.findSuppliersBetweenIdRange(startIndex, endIndex);
 	}
 	
@@ -78,7 +85,6 @@ public class SuppliersServiceImpl implements SuppliersService {
 	 */
 	@Override
 	public void updateSupplier(Supplier supplier) {
-		//ADD CONFIRMATION TO NOT ALLOW INSERTING
 		Optional<Supplier> supplier2 = suppliersRepository.findById(supplier.getSupplierID());
 		
 		if( supplier2.isPresent() ) {

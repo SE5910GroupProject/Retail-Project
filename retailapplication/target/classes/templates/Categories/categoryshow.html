@@ -51,15 +51,24 @@
 					<th>Category Description</th>
 				</tr>
 				<tr th:each="catagory: ${categories}">
-						<td th:text="${catagory.categoryID}" />
-		    			<td th:text="${catagory.categoryName}" />
-		    			<td th:text="${catagory.description}" />
+					<td th:text="${catagory.categoryID}" />
+		    		<td th:text="${catagory.categoryName}" />
+		    		<td th:text="${catagory.description}" />
 				</tr>
 			</table>
 		</div>
-		
-		<div th:replace="~{fragments/footer :: footer}"></div>
-		
+		<div th:unless="${not #lists.isEmpty(categories)}">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="alert alert-info" role="alert" th:if="${noRowsFound}" th:utext="${noRowsFound}">
+					</div>
+				</div>
+			</div>
+		</div>
 	</form>
 </body>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
 </html>

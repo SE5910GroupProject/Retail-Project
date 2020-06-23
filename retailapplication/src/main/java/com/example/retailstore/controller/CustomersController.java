@@ -106,6 +106,12 @@ public class CustomersController {
 			model.addAttribute("customers", customers);
 			model.addAttribute("showCustomerForm", new ShowCustomerForm());
 			
+			
+			if(customers == null || customers.isEmpty()) {
+				model.addAttribute("noRowsFound", "No Customers found between provided indexes.");
+			}
+			
+			
 			return "/customer/customershow";
 		}
 	}
