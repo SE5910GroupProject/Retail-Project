@@ -60,7 +60,7 @@
 		<p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity Error</p>
 		
 		<label for="inputunitprice" class="sr-only">Product Unit Price</label>
-		<input type="number" th:field="*{unitPrice}"
+		<input type="number" step="0.01" th:field="*{unitPrice}"
 			class="form-control" placeholder="Product Unit Price (Required)" required>
 		<p th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">Unit Price Error</p>
 			
