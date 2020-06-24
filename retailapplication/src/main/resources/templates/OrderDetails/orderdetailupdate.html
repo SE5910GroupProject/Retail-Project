@@ -46,14 +46,14 @@
 		<p th:if="${#fields.hasErrors('orderDetailsID')}" th:errors="*{orderDetailsID}">Order Details ID Error</p>
 		
 		<select th:field="*{orderID}" class="form-control" required>
-			<option value="">Select a Order ID (Required)</option>
+			<option value="">Select an Order ID (Required)</option>
 			<option th:each="order : ${orders}" th:value="${order.orderID}" th:text="${order.orderID}">
 			</option>
 		</select>
 	    <p th:if="${#fields.hasErrors('orderID')}" th:errors="*{orderID}">Order ID Error</p>
 	    
 		<select th:field="*{productID}" class="form-control" required>
-			<option value="">Select an Order (Required)</option>
+			<option value="">Select a Product (Required)</option>
 			<option th:each="product : ${products}" th:value="${product.productID}" th:text="${product.productName}">
 			</option>
 		</select>

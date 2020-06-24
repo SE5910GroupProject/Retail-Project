@@ -13,6 +13,32 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/categories/categoryinsert}">Insert</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/categories/categoryupdate}">Update</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/categories/categorydelete}">Delete</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/categories/categoryshow}">Show</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Suppliers</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/suppliers/supplierinsert}">Insert</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/suppliers/supplierupdate}">Update</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/suppliers/supplierdelete}">Delete</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/suppliers/suppliershow}">Show</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -27,19 +53,6 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/categories/categoryinsert}">Insert</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/categories/categoryupdate}">Update</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/categories/categorydelete}">Delete</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/categories/categoryshow}">Show</a>
-          <div class="dropdown-divider"></div>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customers</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" th:href="@{/customer/customerinsert}">Insert</a>
@@ -49,19 +62,6 @@
           <a class="dropdown-item" th:href="@{/customer/customerdelete}">Delete</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" th:href="@{/customer/customershow}">Show</a>
-          <div class="dropdown-divider"></div>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Suppliers</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/suppliers/supplierinsert}">Insert</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/suppliers/supplierupdate}">Update</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/suppliers/supplierdelete}">Delete</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/suppliers/suppliershow}">Show</a>
           <div class="dropdown-divider"></div>
         </div>
       </li>
